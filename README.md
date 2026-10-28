@@ -53,15 +53,24 @@ first, then run the checks using the classpath and database configuration
 appropriate for your local environment. Some checks require a running MySQL
 instance and create temporary test data.
 
-## Project layout
+## File structure
 
 ```text
-database/       Database schema and migrations
-documentation/  UML diagrams and project documentation
-src/main/java/  Application source code
-src/main/resources/ Application assets
-src/test/       Verification checks
-lib/            Runtime libraries
+OpenEvent/
+├── database/
+│   ├── schema.sql                 Database schema
+│   └── migration-*.sql            Database migrations
+├── documentation/                 UML diagrams and project documentation
+├── lib/                           Runtime libraries
+├── src/
+│   ├── main/
+│   │   ├── java/                  Application source code
+│   │   └── resources/             Images and other application assets
+│   └── test/                      Verification checks
+├── config.example.properties      Safe configuration template
+├── config.properties              Local configuration; not committed
+├── pom.xml                        Maven project configuration
+└── README.md                      Project documentation
 ```
 
 
