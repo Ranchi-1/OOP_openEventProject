@@ -6,7 +6,7 @@
 The flexible venue extension is implemented. New events use a section-based editor with custom ticket names, prices and colors. Read `documentation/FlexibleVenue_Guide.md` in the project (or `OpenEvent_FlexibleVenue_Guide.md` beside this guide). Existing grid events remain supported. The grid-specific instructions below describe legacy events.
 
 
-Project: C:\Users\User\Documents\NetBeansProjects\OpenEvent
+
 
 ## Run the project
 
@@ -75,9 +75,9 @@ All 27 acceptance checks passed on 26 October 2026: login, disabled accounts, du
 
 ## Assets and scope
 
-Downloaded event photos are in C:\Users\User\Downloads\assest and packaged under src/main/resources/assets. Existing icons are reused. Photos: Unsplash images photo-1492684223066-81342ee5ff30, photo-1470229722913-7c0e2dbbafd3 and photo-1516280440614-37939bbacd81.
 
-Figma was inspected and left unchanged. Real payments, QR/camera scanning, advanced filters, email/SMS, public deployment and large-scale operations remain outside the BSIT-2 scope.
+
+
 
 
 ## Beginner and intermediate code revision on 27 October 2026
