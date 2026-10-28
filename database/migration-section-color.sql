@@ -1,0 +1,1 @@
+ALTER TABLE venue_areas ADD COLUMN IF NOT EXISTS area_color CHAR(7) NULL;

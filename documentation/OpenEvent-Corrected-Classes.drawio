@@ -1,0 +1,548 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device" version="24.7.17">
+  <diagram name="01 · Accounts, tickets and simulated payments">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1702">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="01 · Accounts, tickets and simulated payments" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="15" width="1500" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation UML · selected actual members · + public, - private, # protected · italics abstract · underlining static" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1500" height="35" />
+        </mxCell>
+        <mxCell id="User" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;i&gt;&lt;b&gt;User&lt;/b&gt;&lt;/i&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- id : long&lt;br&gt;- name : String&lt;br&gt;- email : String&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getId() : long&lt;br&gt;+ getName() : String&lt;br&gt;+ getEmail() : String&lt;br&gt;&lt;i&gt;+ role() : String&lt;/i&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="150" width="430" height="244" />
+        </mxCell>
+        <mxCell id="Session" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Session&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- user : User&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getUser() : User&lt;br&gt;+ isHost() : boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="150" width="430" height="152" />
+        </mxCell>
+        <mxCell id="Ticket" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Ticket&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- id : long&lt;br&gt;- code : String&lt;br&gt;- customerId : long&lt;br&gt;- seatLabel : String&lt;br&gt;- category : String&lt;br&gt;- amount : BigDecimal&lt;br&gt;- status : String&lt;br&gt;- paymentStatus : String&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getCategory() : String&lt;br&gt;+ getAmount() : BigDecimal&lt;br&gt;+ getStatus() : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="150" width="430" height="336" />
+        </mxCell>
+        <mxCell id="Host" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Host&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ role() : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="621.0" width="430" height="129" />
+        </mxCell>
+        <mxCell id="Customer" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Customer&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ role() : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="621.0" width="430" height="129" />
+        </mxCell>
+        <mxCell id="Receipt" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Receipt&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- ticket : Ticket&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getTicket() : Ticket&lt;br&gt;+ asText() : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="621.0" width="430" height="152" />
+        </mxCell>
+        <mxCell id="Payment" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;i&gt;&lt;b&gt;Payment&lt;/b&gt;&lt;/i&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;i&gt;+ method() : String&lt;/i&gt;&lt;br&gt;+ processSimulatedPayment(amount : BigDecimal, success :&lt;br&gt;boolean) : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="908.0" width="430" height="175" />
+        </mxCell>
+        <mxCell id="CashPayment" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;CashPayment&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ method() : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1218.0" width="430" height="129" />
+        </mxCell>
+        <mxCell id="EWalletPayment" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;EWalletPayment&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ method() : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="1218.0" width="430" height="129" />
+        </mxCell>
+        <mxCell id="CreditCardPayment" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;CreditCardPayment&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ method() : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="1218.0" width="430" height="129" />
+        </mxCell>
+        <mxCell id="relation0" value="extends" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="Host" target="User">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="600" />
+              <mxPoint x="260" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation1" value="extends" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="Customer" target="User">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="600" />
+              <mxPoint x="270" y="600" />
+              <mxPoint x="270" y="420" />
+              <mxPoint x="260" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation2" value="1 : 1" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitX=0;exitY=0.5;entryX=1;entryY=0.5;fontSize=11;" edge="1" parent="1" source="Session" target="User">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="230" />
+              <mxPoint x="500" y="230" />
+              <mxPoint x="500" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation3" value="0..1 : 1" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;fontSize=11;" edge="1" parent="1" source="Receipt" target="Ticket">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1260" y="600" />
+              <mxPoint x="1260" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation4" value="extends" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="CashPayment" target="Payment">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="1190" />
+              <mxPoint x="260" y="1110" />
+              <mxPoint x="760" y="1110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation5" value="extends" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="EWalletPayment" target="Payment">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="1190" />
+              <mxPoint x="760" y="1110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation6" value="extends" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="CreditCardPayment" target="Payment">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1260" y="1190" />
+              <mxPoint x="770" y="1190" />
+              <mxPoint x="770" y="1110" />
+              <mxPoint x="760" y="1110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Ticket.category and Ticket.amount are purchase snapshots. Status strings: VALID / USED / CANCELLED; payments: SIMULATED_SUCCESS / SIMULATED_REFUNDED. Credentials and enabled flags are stored in MariaDB, not in User objects. Failed payments issue no ticket or receipt. Additional Ticket getters are omitted for readability. Hollow diamonds denote shared aggregation of reusable value objects; they do not claim automatic Java object deletion. Relation counts read source to target." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1482.0" width="1460" height="100" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="02 · Event hierarchy and legacy seating">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1599">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="02 · Event hierarchy and legacy seating" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="15" width="1500" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation UML · selected actual members · + public, - private, # protected · italics abstract · underlining static" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1500" height="35" />
+        </mxCell>
+        <mxCell id="Event" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;i&gt;&lt;b&gt;Event&lt;/b&gt;&lt;/i&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- id : long&lt;br&gt;- hostId : long&lt;br&gt;- title : String&lt;br&gt;- venue : String&lt;br&gt;- startsAt : LocalDateTime&lt;br&gt;- earlyBirdUntil : LocalDateTime&lt;br&gt;- basePrice : BigDecimal&lt;br&gt;- published : boolean&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;i&gt;+ eventType() : String&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ experienceLabel() : String&lt;/i&gt;&lt;br&gt;+ calculatePrice(seat : Seat, category : String) : BigDecimal&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="150" width="430" height="336" />
+        </mxCell>
+        <mxCell id="Concert" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Concert&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ eventType() : String&lt;br&gt;+ experienceLabel() : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="621.0" width="430" height="152" />
+        </mxCell>
+        <mxCell id="SportsMatch" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;SportsMatch&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ eventType() : String&lt;br&gt;+ experienceLabel() : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="621.0" width="430" height="152" />
+        </mxCell>
+        <mxCell id="MovieScreening" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;MovieScreening&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ eventType() : String&lt;br&gt;+ experienceLabel() : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="621.0" width="430" height="152" />
+        </mxCell>
+        <mxCell id="VenueLayout" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;VenueLayout&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- rows : int&lt;br&gt;- columns : int&lt;br&gt;- stageRow : int&lt;br&gt;- stageColumn : int&lt;br&gt;- stageWidth : int&lt;br&gt;- seats : List&amp;lt;Seat&amp;gt;&lt;br&gt;- plan : VenuePlan&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ isFlexible() : boolean&lt;br&gt;+ getPlan() : VenuePlan&lt;br&gt;+ getSeats() : List&amp;lt;Seat&amp;gt;&lt;br&gt;+ getSections() : List&amp;lt;Section&amp;gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="908.0" width="430" height="336" />
+        </mxCell>
+        <mxCell id="Section" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Section&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- name : String&lt;br&gt;- color : String&lt;br&gt;- seats : List&amp;lt;Seat&amp;gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getName() : String&lt;br&gt;+ getColor() : String&lt;br&gt;+ getSeats() : List&amp;lt;Seat&amp;gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="908.0" width="430" height="221" />
+        </mxCell>
+        <mxCell id="Seat" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Seat&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- id : long&lt;br&gt;- row : int&lt;br&gt;- column : int&lt;br&gt;- label : String&lt;br&gt;- category : String&lt;br&gt;- status : String&lt;br&gt;- ticketType : TicketType&lt;br&gt;- areaCode : String&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getTypeCode() : String&lt;br&gt;+ getAreaCode() : String&lt;br&gt;+ isAvailable() : boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="908.0" width="430" height="336" />
+        </mxCell>
+        <mxCell id="relation0" value="extends" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="Concert" target="Event">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="600" />
+              <mxPoint x="260" y="510" />
+              <mxPoint x="760" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation1" value="extends" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="SportsMatch" target="Event">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="600" />
+              <mxPoint x="760" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation2" value="extends" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="MovieScreening" target="Event">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1260" y="600" />
+              <mxPoint x="770" y="600" />
+              <mxPoint x="770" y="510" />
+              <mxPoint x="760" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation3" value="builds grouping views" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="VenueLayout" target="Section">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="1080" />
+              <mxPoint x="500" y="1020" />
+              <mxPoint x="520" y="1020" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation4" value="1 : 0..*" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;" edge="1" parent="1" source="Section" target="Seat">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="1020" />
+              <mxPoint x="1000" y="1080" />
+              <mxPoint x="1020" y="1080" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation5" value="1 : 0..*" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;startArrow=diamond;startFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;" edge="1" parent="1" source="VenueLayout" target="Seat">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="1080" />
+              <mxPoint x="520" y="1080" />
+              <mxPoint x="520" y="1140" />
+              <mxPoint x="990" y="1140" />
+              <mxPoint x="990" y="1090" />
+              <mxPoint x="1020" y="1090" />
+              <mxPoint x="1020" y="1080" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Event is abstract; calculatePrice is concrete and shared. Concert, SportsMatch and MovieScreening implement eventType and experienceLabel. Event.hostId identifies its owning Host. Legacy Section groups seats by offer code. The optional flexible plan is expanded on the next page. Seat states are AVAILABLE / SOLD; ticket states determine active ownership. Other getters are omitted. Hollow diamonds denote shared aggregation of reusable value objects; they do not claim automatic Java object deletion. Relation counts read source to target." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1379.0" width="1460" height="100" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="03 · Flexible venue plan and custom ticket offers">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1266">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="03 · Flexible venue plan and custom ticket offers" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="15" width="1500" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation UML · selected actual members · + public, - private, # protected · italics abstract · underlining static" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1500" height="35" />
+        </mxCell>
+        <mxCell id="VenueLayout" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;VenueLayout&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- seats : List&amp;lt;Seat&amp;gt;&lt;br&gt;- plan : VenuePlan&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ isFlexible() : boolean&lt;br&gt;+ getPlan() : VenuePlan&lt;br&gt;+ getSeats() : List&amp;lt;Seat&amp;gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="150" width="430" height="198" />
+        </mxCell>
+        <mxCell id="VenuePlan" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;VenuePlan&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- stage : Stage&lt;br&gt;- areas : List&amp;lt;VenueArea&amp;gt;&lt;br&gt;- types : List&amp;lt;TicketType&amp;gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;u&gt;+ template(template : String, price : BigDecimal) : VenuePlan&lt;/u&gt;&lt;br&gt;+ createSeats() : List&amp;lt;Seat&amp;gt;&lt;br&gt;+ getType(code : String) : TicketType&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="150" width="430" height="221" />
+        </mxCell>
+        <mxCell id="Stage" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Stage&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- x : int&lt;br&gt;- y : int&lt;br&gt;- width : int&lt;br&gt;- height : int&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getBounds() : Rectangle&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="150" width="430" height="198" />
+        </mxCell>
+        <mxCell id="VenueArea" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;VenueArea&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- code : String&lt;br&gt;- name : String&lt;br&gt;- typeCode : String&lt;br&gt;- x : int&lt;br&gt;- y : int&lt;br&gt;- width : int&lt;br&gt;- height : int&lt;br&gt;- rows : int&lt;br&gt;- columns : int&lt;br&gt;- rowOffset : int&lt;br&gt;- shape : String&lt;br&gt;- blocked : Set&amp;lt;String&amp;gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ isBlocked(row : int, column : int) : boolean&lt;br&gt;+ getBounds() : Rectangle&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="506.0" width="430" height="405" />
+        </mxCell>
+        <mxCell id="TicketType" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;TicketType&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- code : String&lt;br&gt;- name : String&lt;br&gt;- price : BigDecimal&lt;br&gt;- color : String&lt;br&gt;- earlyBird : boolean&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getCode() : String&lt;br&gt;+ getName() : String&lt;br&gt;+ getPrice() : BigDecimal&lt;br&gt;+ hasEarlyBird() : boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="506.0" width="430" height="290" />
+        </mxCell>
+        <mxCell id="Seat" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Seat&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- id : long&lt;br&gt;- row : int&lt;br&gt;- column : int&lt;br&gt;- label : String&lt;br&gt;- category : String&lt;br&gt;- status : String&lt;br&gt;- ticketType : TicketType&lt;br&gt;- areaCode : String&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getTypeCode() : String&lt;br&gt;+ getAreaCode() : String&lt;br&gt;+ isAvailable() : boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="506.0" width="430" height="336" />
+        </mxCell>
+        <mxCell id="relation0" value="1 : 0..1" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;startArrow=diamond;startFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;" edge="1" parent="1" source="VenueLayout" target="VenuePlan">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="250" />
+              <mxPoint x="500" y="260" />
+              <mxPoint x="520" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation1" value="1 : 1" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;startArrow=diamond;startFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;" edge="1" parent="1" source="VenuePlan" target="Stage">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="260" />
+              <mxPoint x="1000" y="250" />
+              <mxPoint x="1020" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation2" value="1 : 1..12" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;startArrow=diamond;startFill=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontSize=11;" edge="1" parent="1" source="VenuePlan" target="VenueArea">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="400" />
+              <mxPoint x="260" y="400" />
+              <mxPoint x="260" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation3" value="1 : 1..20" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;startArrow=diamond;startFill=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontSize=11;" edge="1" parent="1" source="VenuePlan" target="TicketType">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="400" />
+              <mxPoint x="760" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation4" value="0..* : 1" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=11;" edge="1" parent="1" source="VenueArea" target="TicketType">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="710" />
+              <mxPoint x="500" y="650" />
+              <mxPoint x="520" y="650" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation5" value="0..* : 0..1" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitX=0;exitY=0.5;entryX=1;entryY=0.5;fontSize=11;" edge="1" parent="1" source="Seat" target="TicketType">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1020" y="670" />
+              <mxPoint x="1000" y="670" />
+              <mxPoint x="1000" y="650" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation6" value="generates seats" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="VenuePlan" target="Seat">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="400" />
+              <mxPoint x="770" y="400" />
+              <mxPoint x="770" y="480" />
+              <mxPoint x="1260" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="VenueArea is a physical section. Several areas may share a TicketType using its stable code. Stage and area coordinates use a 1000 × 700 logical canvas. Each area has at most 100 assigned seats; 12 areas permit at most 1200. Blocked cells become aisles / unavailable spaces. Custom ticket names and prices affect future purchases; old tickets retain snapshots. Legacy fallback pricing remains supported. Hollow diamonds denote shared aggregation of reusable value objects; they do not claim automatic Java object deletion. Relation counts read source to target." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1046.0" width="1460" height="100" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="04 · Application, authorization and JDBC persistence">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1737">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="04 · Application, authorization and JDBC persistence" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="15" width="1500" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation UML · selected actual members · + public, - private, # protected · italics abstract · underlining static" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1500" height="35" />
+        </mxCell>
+        <mxCell id="OpenEventUI" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;OpenEventUI&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- security : SecurityService&lt;br&gt;- repository : BookingRepository&lt;br&gt;- controller : BookingController&lt;br&gt;- session : Session&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- showLogin() : void&lt;br&gt;- openEvent(eventId : long) : void&lt;br&gt;- showEditor(event : Event, layout : VenueLayout, protectSeats :&lt;br&gt;boolean) : void&lt;br&gt;- saveEditorEvent() : void&lt;br&gt;- payForTicket() : void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="150" width="430" height="313" />
+        </mxCell>
+        <mxCell id="BookingController" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;BookingController&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- security : SecurityService&lt;br&gt;- system : BookingSystem&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ purchase(s : Session, r : BookingRequest) : Ticket&lt;br&gt;+ cancel(s : Session, id : long) : void&lt;br&gt;+ checkIn(s : Session, e : long, code : String) : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="150" width="430" height="198" />
+        </mxCell>
+        <mxCell id="BookingSystem" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;BookingSystem&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- repository : BookingRepository&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ purchase(session : Session, request : BookingRequest) : Ticket&lt;br&gt;+ cancel(session : Session, id : long) : void&lt;br&gt;+ checkIn(session : Session, event : long, code : String) : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="150" width="430" height="175" />
+        </mxCell>
+        <mxCell id="BookingRepository" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;BookingRepository&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- security : SecurityService&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ events(session : Session, search : String) : List&amp;lt;Event&amp;gt;&lt;br&gt;+ layout(id : long) : VenueLayout&lt;br&gt;+ saveEvent(session : Session, event : Event, layout :&lt;br&gt;VenueLayout, replaceLayout : boolean) : long&lt;br&gt;+ ticketTypes(session : Session, eventId : long) : List&amp;lt;TicketType&amp;gt;&lt;br&gt;+ updateTicketTypes(session : Session, eventId : long, types :&lt;br&gt;List&amp;lt;TicketType&amp;gt;) : void&lt;br&gt;+ purchase(session : Session, request : BookingRequest) : Ticket&lt;br&gt;+ cancel(session : Session, ticketId : long) : void&lt;br&gt;+ checkIn(session : Session, eventId : long, code : String) : String&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="598.0" width="430" height="336" />
+        </mxCell>
+        <mxCell id="SecurityService" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;SecurityService&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ login(email : String, password : char[], host : boolean) : Session&lt;br&gt;+ registerCustomer(name : String, email : String, password : char[]) :&lt;br&gt;void&lt;br&gt;+ requireHost(session : Session, ownerId : long) : void&lt;br&gt;+ requireCustomer(session : Session) : void&lt;br&gt;&lt;u&gt;+ hash(password : char[]) : String&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ verify(password : char[], stored : String) : boolean&lt;/u&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="598.0" width="430" height="267" />
+        </mxCell>
+        <mxCell id="Database" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;Database&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;u&gt;+ connect() : Connection&lt;/u&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="598.0" width="430" height="129" />
+        </mxCell>
+        <mxCell id="VenuePlanRepository" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;VenuePlanRepository&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;u&gt;+ read(connection : Connection, eventId : long) : VenuePlan&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ readTypes(connection : Connection, eventId : long) :&lt;br&gt;List&amp;lt;TicketType&amp;gt;&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ save(connection : Connection, eventId : long, plan : VenuePlan) :&lt;br&gt;void&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ updateTypes(connection : Connection, eventId : long, types :&lt;br&gt;List&amp;lt;TicketType&amp;gt;) : void&lt;/u&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1069.0" width="430" height="267" />
+        </mxCell>
+        <mxCell id="BookingRequest" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;BookingRequest&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- eventId : long&lt;br&gt;- seatId : long&lt;br&gt;- category : String&lt;br&gt;- payment : Payment&lt;br&gt;- simulateSuccess : boolean&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getEventId() : long&lt;br&gt;+ getSeatId() : long&lt;br&gt;+ getCategory() : String&lt;br&gt;+ getPayment() : Payment&lt;br&gt;+ isSimulateSuccess() : boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="1069.0" width="430" height="313" />
+        </mxCell>
+        <mxCell id="relation0" value="purchase /&amp;lt;br&amp;gt;cancellation&lt;br&gt;/ check-in" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="OpenEventUI" target="BookingController">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="310" />
+              <mxPoint x="500" y="250" />
+              <mxPoint x="520" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation1" value="login / registration" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="OpenEventUI" target="SecurityService">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="490" />
+              <mxPoint x="260" y="570" />
+              <mxPoint x="760" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation2" value="events, layouts,&amp;lt;br&amp;gt;offers&lt;br&gt;and summaries" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="OpenEventUI" target="BookingRepository">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="490" />
+              <mxPoint x="250" y="490" />
+              <mxPoint x="250" y="570" />
+              <mxPoint x="260" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation3" value="requireCustomer&amp;lt;br&amp;gt;/&lt;br&gt;requireHost" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="BookingController" target="SecurityService">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="370" />
+              <mxPoint x="760" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation4" value="delegates" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="BookingController" target="BookingSystem">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="250" />
+              <mxPoint x="1000" y="240" />
+              <mxPoint x="1020" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation5" value="delegates" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="BookingSystem" target="BookingRepository">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1260" y="350" />
+              <mxPoint x="990" y="350" />
+              <mxPoint x="990" y="360" />
+              <mxPoint x="490" y="360" />
+              <mxPoint x="490" y="480" />
+              <mxPoint x="270" y="480" />
+              <mxPoint x="270" y="560" />
+              <mxPoint x="260" y="560" />
+              <mxPoint x="260" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation6" value="uses same transaction" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="BookingRepository" target="VenuePlanRepository">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="960" />
+              <mxPoint x="260" y="1040" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation7" value="opens&lt;br&gt;connection&amp;lt;br&amp;gt;per operation" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="BookingRepository" target="Database">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="770" />
+              <mxPoint x="500" y="660" />
+              <mxPoint x="520" y="660" />
+              <mxPoint x="520" y="560" />
+              <mxPoint x="770" y="560" />
+              <mxPoint x="770" y="570" />
+              <mxPoint x="990" y="570" />
+              <mxPoint x="990" y="660" />
+              <mxPoint x="1020" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation8" value="reads&lt;br&gt;/&amp;lt;br&amp;gt;writes accounts" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="SecurityService" target="Database">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="730" />
+              <mxPoint x="1000" y="670" />
+              <mxPoint x="1020" y="670" />
+              <mxPoint x="1020" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="OpenEventUI holds Session. SecurityService is stateless; successful login returns a Session and always clears temporary password chars. BookingRepository enforces atomic seat claims, historical ticket snapshots, ownership, structural locks, refunds and one-time check-in. Summary counts/totals are calculated in OpenEventUI from saved ticket and seat lists. No AccountRecord, BookingData or EventSummary classes are implemented. Hollow diamonds denote shared aggregation of reusable value objects; they do not claim automatic Java object deletion. Relation counts read source to target." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1517.0" width="1460" height="100" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="05 · Swing venue editing and password visibility">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1725">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="05 · Swing venue editing and password visibility" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="15" width="1500" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation UML · selected actual members · + public, - private, # protected · italics abstract · underlining static" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1500" height="35" />
+        </mxCell>
+        <mxCell id="LoginView" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;LoginView&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- passwordVisibility : PasswordVisibility&lt;br&gt;+ password : javax.swing.JPasswordField&lt;br&gt;+ passwordToggle : javax.swing.JToggleButton&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ hidePassword() : void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="150" width="430" height="175" />
+        </mxCell>
+        <mxCell id="PasswordVisibility" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;PasswordVisibility&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- field : JPasswordField&lt;br&gt;- button : JToggleButton&lt;br&gt;- mask : char&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ hidePassword() : void&lt;br&gt;+ actionPerformed(event : ActionEvent) : void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="150" width="430" height="198" />
+        </mxCell>
+        <mxCell id="PasswordEyeIcon" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;PasswordEyeIcon&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- slash : boolean&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getIconWidth() : int&lt;br&gt;+ getIconHeight() : int&lt;br&gt;+ paintIcon(component : Component, graphics : Graphics, x : int, y :&lt;br&gt;int) : void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="150" width="430" height="198" />
+        </mxCell>
+        <mxCell id="VenueDesigner" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;VenueDesigner&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- plan : VenuePlan&lt;br&gt;- locked : boolean&lt;br&gt;- canvas : VenueCanvas&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getPlan() : VenuePlan&lt;br&gt;+ actionPerformed(event : ActionEvent) : void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="483.0" width="430" height="198" />
+        </mxCell>
+        <mxCell id="TicketTypePanel" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;TicketTypePanel&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- model : DefaultListModel&amp;lt;TicketType&amp;gt;&lt;br&gt;- list : JList&amp;lt;TicketType&amp;gt;&lt;br&gt;- name : JTextField&lt;br&gt;- price : JTextField&lt;br&gt;- early : JCheckBox&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ getTypes() : List&amp;lt;TicketType&amp;gt;&lt;br&gt;+ actionPerformed(event : ActionEvent) : void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="483.0" width="430" height="244" />
+        </mxCell>
+        <mxCell id="VenueCanvas" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;VenueCanvas&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- plan : VenuePlan&lt;br&gt;- listener : Listener&lt;br&gt;- editable : boolean&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ setPlan(plan : VenuePlan) : void&lt;br&gt;+ select(index : int) : void&lt;br&gt;# paintComponent(graphics : Graphics) : void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="483.0" width="430" height="221" />
+        </mxCell>
+        <mxCell id="VenueBrowser" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;VenueBrowser&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- layout : VenueLayout&lt;br&gt;- listener : SeatGrid.SeatSelectionListener&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- showOverview() : void&lt;br&gt;- showSection(index : int) : void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="862.0" width="430" height="175" />
+        </mxCell>
+        <mxCell id="SeatGrid" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;SeatGrid&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- listener : SeatSelectionListener&lt;br&gt;- selected : Seat&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- selectSeat(seat : Seat, button : JButton) : void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="862.0" width="430" height="152" />
+        </mxCell>
+        <mxCell id="ResponsiveView" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;ResponsiveView&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- content : JPanel&lt;br&gt;- referenceWidth : int&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ fitWidth() : void&lt;br&gt;+ getScrollableTracksViewportWidth() : boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1172.0" width="430" height="175" />
+        </mxCell>
+        <mxCell id="EventCards" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;EventCards&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;- grid : GridLayout&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;+ updateColumns() : void&lt;br&gt;+ getScrollableTracksViewportWidth() : boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="540" y="1172.0" width="430" height="152" />
+        </mxCell>
+        <mxCell id="DisplayText" value="&lt;div style=&quot;text-align:center&quot;&gt;&lt;b&gt;DisplayText&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;/div&gt;&lt;hr&gt;&lt;div style=&quot;line-height:23px&quot;&gt;&lt;u&gt;+ ticketStatus(status : String) : String&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ paymentStatus(status : String) : String&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ category(category : String) : String&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ method(method : String) : String&lt;/u&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontFamily=Arial;fontSize=13;fillColor=#FAF8FF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="1172.0" width="430" height="198" />
+        </mxCell>
+        <mxCell id="relation0" value="one field&amp;lt;br&amp;gt;+&lt;br&gt;toggle helper" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="LoginView" target="PasswordVisibility">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="240" />
+              <mxPoint x="500" y="250" />
+              <mxPoint x="520" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation1" value="open eye&amp;lt;br&amp;gt;/&lt;br&gt;eye-slash icons" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="PasswordVisibility" target="PasswordEyeIcon">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="250" />
+              <mxPoint x="1020" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation2" value="editable overview" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="VenueDesigner" target="VenueCanvas">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="580" />
+              <mxPoint x="520" y="580" />
+              <mxPoint x="520" y="460" />
+              <mxPoint x="990" y="460" />
+              <mxPoint x="990" y="590" />
+              <mxPoint x="1020" y="590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation3" value="modal offer editing" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="VenueDesigner" target="TicketTypePanel">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="580" />
+              <mxPoint x="500" y="600" />
+              <mxPoint x="520" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation4" value="customer overview" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;dashed=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="VenueBrowser" target="VenueCanvas">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="840" />
+              <mxPoint x="260" y="740" />
+              <mxPoint x="990" y="740" />
+              <mxPoint x="990" y="730" />
+              <mxPoint x="1260" y="730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation5" value="&lt;br&gt;selected-section&amp;lt;br&amp;gt;detail" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;endArrow=open;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="VenueBrowser" target="SeatGrid">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="950" />
+              <mxPoint x="500" y="940" />
+              <mxPoint x="520" y="940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="All original form panels remain editable in NetBeans Design. ResponsiveView fits their width, EventCards adjusts column count, and DisplayText translates stored status codes. Section and offer edits are retained when switching selections. Password toggle is a JToggleButton in LoginView.form. Registration uses a separate helper with its own password field. Passwords begin hidden, and sign-in submission hides them again. Toggling changes only echoChar, never the stored or entered password. Map selection/movement callbacks use ordinary listener interfaces. Hollow diamonds denote shared aggregation of reusable value objects; they do not claim automatic Java object deletion. Relation counts read source to target." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1505.0" width="1460" height="100" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

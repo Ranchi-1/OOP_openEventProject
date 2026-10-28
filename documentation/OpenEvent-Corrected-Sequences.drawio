@@ -1,0 +1,1336 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device" qa-row-spacing="100">
+  <diagram name="01 · Authentication, visibility and authorization">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1500" pageHeight="1866">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="01 · Authentication, visibility and authorization" style="text;html=1;align=left;fontSize=24;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="15" width="1440" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation sequence · solid arrows: calls · dashed arrows: returns · bracketed text: guards" style="text;html=1;align=left;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="70" width="1440" height="35" />
+        </mxCell>
+        <mxCell id="head0" value="Actor:&lt;br&gt;Host / Customer" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="45" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life0" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="180" />
+            <mxPoint as="targetPoint" x="140" y="1634" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head1" value="ui:&lt;br&gt;OpenEventUI" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="275" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life1" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="180" />
+            <mxPoint as="targetPoint" x="370" y="1634" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head2" value="login:&lt;br&gt;LoginView" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="505" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life2" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="180" />
+            <mxPoint as="targetPoint" x="600" y="1634" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head3" value="security:&lt;br&gt;SecurityService" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="735" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life3" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="180" />
+            <mxPoint as="targetPoint" x="830" y="1634" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head4" value="db:&lt;br&gt;MariaDB" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="965" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life4" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="180" />
+            <mxPoint as="targetPoint" x="1060" y="1634" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="frame0" value="alt authentication result" style="shape=umlFrame;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=none;strokeColor=#AAAAAA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1006" width="1440" height="449" />
+        </mxCell>
+        <mxCell id="split0" style="dashed=1;endArrow=none;strokeColor=#AAAAAA;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="30" y="1210" />
+            <mxPoint as="targetPoint" x="1470" y="1210" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message0" value="&lt;div style=&quot;text-align:center&quot;&gt;1. Enter role, email and password&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="249" />
+            <mxPoint as="targetPoint" x="600" y="249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active0" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="249" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message1" value="&lt;div style=&quot;text-align:center&quot;&gt;2. [optional] Toggle eye icon; echoChar changes&lt;br&gt;locally&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="349" />
+            <mxPoint as="targetPoint" x="600" y="349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active1" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="349" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message2" value="&lt;div style=&quot;text-align:center&quot;&gt;3. Submit sign-in&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="449" />
+            <mxPoint as="targetPoint" x="370" y="449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active2" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="365" y="449" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message3" value="&lt;div style=&quot;text-align:center&quot;&gt;4. hidePassword(); read&lt;br&gt;getPassword()&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="549" />
+            <mxPoint as="targetPoint" x="600" y="549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active3" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="549" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message4" value="&lt;div style=&quot;text-align:center&quot;&gt;5. login(email, password, host)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="649" />
+            <mxPoint as="targetPoint" x="830" y="649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active4" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="825" y="649" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message5" value="&lt;div style=&quot;text-align:center&quot;&gt;6. SELECT enabled account for&lt;br&gt;chosen role&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="749" />
+            <mxPoint as="targetPoint" x="1060" y="749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active5" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1055" y="749" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message6" value="&lt;div style=&quot;text-align:center&quot;&gt;7. Account row and salted password&lt;br&gt;hash, or no row&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="849" />
+            <mxPoint as="targetPoint" x="830" y="849" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message7" value="&lt;div style=&quot;text-align:center&quot;&gt;8. verify(password, savedHash)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="949" />
+            <Array as="points">
+              <mxPoint x="900" y="949" />
+              <mxPoint x="900" y="979" />
+            </Array>
+            <mxPoint as="targetPoint" x="830" y="979" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message8" value="&lt;div style=&quot;text-align:center&quot;&gt;9. [invalid / disabled] throw; no Session created&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="1049" />
+            <mxPoint as="targetPoint" x="370" y="1049" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message9" value="&lt;div style=&quot;text-align:center&quot;&gt;10. [invalid / disabled] Show login&lt;br&gt;error&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="1149" />
+            <mxPoint as="targetPoint" x="140" y="1149" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message10" value="&lt;div style=&quot;text-align:center&quot;&gt;11. [valid] return new Session(new Host / Customer)&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="1249" />
+            <mxPoint as="targetPoint" x="370" y="1249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message11" value="&lt;div style=&quot;text-align:center&quot;&gt;12. [valid] assign session; clear password&lt;br&gt;field&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="1349" />
+            <Array as="points">
+              <mxPoint x="440" y="1349" />
+              <mxPoint x="440" y="1379" />
+            </Array>
+            <mxPoint as="targetPoint" x="370" y="1379" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message12" value="&lt;div style=&quot;text-align:center&quot;&gt;13. [valid] Show role-appropriate&lt;br&gt;dashboard / discovery&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="1449" />
+            <mxPoint as="targetPoint" x="140" y="1449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="notes" value="PasswordVisibility only changes JPasswordField.echoChar. It does not transmit or persist password text. SecurityService always clears its temporary char[] in finally. The UI holds Session; logout clears it and creates a newly masked LoginView. Database accounts are checked by SecurityService; event ownership is checked again for Host operations." style="shape=note;whiteSpace=wrap;html=1;spacing=15;align=left;verticalAlign=middle;fontSize=18;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1683" width="1440" height="146" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="02 · Event setup, flexible venue and custom ticket offers">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1940" pageHeight="2266">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="02 · Event setup, flexible venue and custom ticket offers" style="text;html=1;align=left;fontSize=24;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="15" width="1880" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation sequence · solid arrows: calls · dashed arrows: returns · bracketed text: guards" style="text;html=1;align=left;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="70" width="1880" height="35" />
+        </mxCell>
+        <mxCell id="head0" value="Actor:&lt;br&gt;Host" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="45" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life0" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="180" />
+            <mxPoint as="targetPoint" x="140" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head1" value="ui:&lt;br&gt;OpenEventUI" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="275" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life1" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="180" />
+            <mxPoint as="targetPoint" x="370" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head2" value="designer:&lt;br&gt;VenueDesigner" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="505" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life2" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="180" />
+            <mxPoint as="targetPoint" x="600" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head3" value="plan:&lt;br&gt;VenuePlan" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="735" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life3" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="180" />
+            <mxPoint as="targetPoint" x="830" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head4" value="repo:&lt;br&gt;BookingRepository" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="965" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life4" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="180" />
+            <mxPoint as="targetPoint" x="1060" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head5" value="security:&lt;br&gt;SecurityService" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1195" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life5" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="180" />
+            <mxPoint as="targetPoint" x="1290" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head6" value="plans:&lt;br&gt;VenuePlanRepository" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1425" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life6" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1520" y="180" />
+            <mxPoint as="targetPoint" x="1520" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head7" value="db:&lt;br&gt;MariaDB" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1655" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life7" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1750" y="180" />
+            <mxPoint as="targetPoint" x="1750" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="frame0" value="alt save rejected / allowed" style="shape=umlFrame;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=none;strokeColor=#AAAAAA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1106" width="1880" height="749" />
+        </mxCell>
+        <mxCell id="split0" style="dashed=1;endArrow=none;strokeColor=#AAAAAA;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="30" y="1310" />
+            <mxPoint as="targetPoint" x="1910" y="1310" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message0" value="&lt;div style=&quot;text-align:center&quot;&gt;1. Create / edit event and venue&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="249" />
+            <mxPoint as="targetPoint" x="370" y="249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active0" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="365" y="249" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message1" value="&lt;div style=&quot;text-align:center&quot;&gt;2. Open designer (locked when&lt;br&gt;active bookings exist)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="349" />
+            <mxPoint as="targetPoint" x="600" y="349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active1" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="349" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message2" value="&lt;div style=&quot;text-align:center&quot;&gt;3. Set template, stage, sections, seat cells and ticket&lt;br&gt;types&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="449" />
+            <mxPoint as="targetPoint" x="600" y="449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active2" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="449" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message3" value="&lt;div style=&quot;text-align:center&quot;&gt;4. getPlan()&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="549" />
+            <mxPoint as="targetPoint" x="600" y="549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active3" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="549" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message4" value="&lt;div style=&quot;text-align:center&quot;&gt;5. Construct plan; validate names,&lt;br&gt;bounds, overlap and limits&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="649" />
+            <mxPoint as="targetPoint" x="830" y="649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active4" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="825" y="649" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message5" value="&lt;div style=&quot;text-align:center&quot;&gt;6. Validated plan or validation&lt;br&gt;exception&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="749" />
+            <mxPoint as="targetPoint" x="600" y="749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message6" value="&lt;div style=&quot;text-align:center&quot;&gt;7. saveEvent(session, event, layout, replaceLayout)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="849" />
+            <mxPoint as="targetPoint" x="1060" y="849" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active6" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1055" y="849" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message7" value="&lt;div style=&quot;text-align:center&quot;&gt;8. requireHost(session, event.hostId)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="949" />
+            <mxPoint as="targetPoint" x="1290" y="949" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active7" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="949" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message8" value="&lt;div style=&quot;text-align:center&quot;&gt;9. BEGIN; lock existing event; verify owner / active tickets&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1049" />
+            <mxPoint as="targetPoint" x="1750" y="1049" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active8" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1745" y="1049" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message9" value="&lt;div style=&quot;text-align:center&quot;&gt;10. [structural change + active tickets] ROLLBACK&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1149" />
+            <mxPoint as="targetPoint" x="1750" y="1149" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active9" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1745" y="1149" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message10" value="&lt;div style=&quot;text-align:center&quot;&gt;11. [rejected] ownership / booked-layout error&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1249" />
+            <mxPoint as="targetPoint" x="370" y="1249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message11" value="&lt;div style=&quot;text-align:center&quot;&gt;12. [allowed] Save event and, if replacing, generated seats&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1349" />
+            <mxPoint as="targetPoint" x="1750" y="1349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active11" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1745" y="1349" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message12" value="&lt;div style=&quot;text-align:center&quot;&gt;13. [allowed] updateTypes(); save() using same&lt;br&gt;connection&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1449" />
+            <mxPoint as="targetPoint" x="1520" y="1449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active12" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="1449" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message13" value="&lt;div style=&quot;text-align:center&quot;&gt;14. [allowed] Persist stage, areas and&lt;br&gt;offer metadata&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1520" y="1549" />
+            <mxPoint as="targetPoint" x="1750" y="1549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active13" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1745" y="1549" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message14" value="&lt;div style=&quot;text-align:center&quot;&gt;15. [allowed] COMMIT all changes&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1649" />
+            <mxPoint as="targetPoint" x="1750" y="1649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active14" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1745" y="1649" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message15" value="&lt;div style=&quot;text-align:center&quot;&gt;16. [allowed] Return saved event id&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1749" />
+            <mxPoint as="targetPoint" x="370" y="1749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message16" value="&lt;div style=&quot;text-align:center&quot;&gt;17. [allowed] Show saved Host&lt;br&gt;dashboard&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="1849" />
+            <mxPoint as="targetPoint" x="140" y="1849" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="notes" value="One layout per event: at most 12 physical sections, 100 assigned seats each, 20 ticket offers. Legacy grids remain usable. Active bookings lock geometry and assignment; ticket names, colors and future prices can change. A failed write rolls back all changes. Purchased tickets keep their original type name, amount and seat label." style="shape=note;whiteSpace=wrap;html=1;spacing=15;align=left;verticalAlign=middle;fontSize=18;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="2083" width="1880" height="146" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="03 · Section selection and atomic ticket purchase">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="2170" pageHeight="2666">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="03 · Section selection and atomic ticket purchase" style="text;html=1;align=left;fontSize=24;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="15" width="2110" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation sequence · solid arrows: calls · dashed arrows: returns · bracketed text: guards" style="text;html=1;align=left;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="70" width="2110" height="35" />
+        </mxCell>
+        <mxCell id="head0" value="Actor:&lt;br&gt;Customer" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="45" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life0" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="180" />
+            <mxPoint as="targetPoint" x="140" y="2434" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head1" value="ui:&lt;br&gt;OpenEventUI" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="275" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life1" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="180" />
+            <mxPoint as="targetPoint" x="370" y="2434" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head2" value="controller:&lt;br&gt;BookingController" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="505" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life2" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="180" />
+            <mxPoint as="targetPoint" x="600" y="2434" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head3" value="system:&lt;br&gt;BookingSystem" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="735" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life3" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="180" />
+            <mxPoint as="targetPoint" x="830" y="2434" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head4" value="repo:&lt;br&gt;BookingRepository" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="965" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life4" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="180" />
+            <mxPoint as="targetPoint" x="1060" y="2434" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head5" value="security:&lt;br&gt;SecurityService" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1195" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life5" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="180" />
+            <mxPoint as="targetPoint" x="1290" y="2434" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head6" value="event:&lt;br&gt;Event" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1425" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life6" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1520" y="180" />
+            <mxPoint as="targetPoint" x="1520" y="2434" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head7" value="payment:&lt;br&gt;Payment" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1655" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life7" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1750" y="180" />
+            <mxPoint as="targetPoint" x="1750" y="2434" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head8" value="db:&lt;br&gt;MariaDB" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1885" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life8" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1980" y="180" />
+            <mxPoint as="targetPoint" x="1980" y="2434" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="frame0" value="alt transaction failure / successful purchase" style="shape=umlFrame;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=none;strokeColor=#AAAAAA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1606" width="2110" height="649" />
+        </mxCell>
+        <mxCell id="split0" style="dashed=1;endArrow=none;strokeColor=#AAAAAA;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="30" y="1810" />
+            <mxPoint as="targetPoint" x="2140" y="1810" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message0" value="&lt;div style=&quot;text-align:center&quot;&gt;1. Open event; choose section and&lt;br&gt;available seat&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="249" />
+            <mxPoint as="targetPoint" x="370" y="249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active0" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="365" y="249" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message1" value="&lt;div style=&quot;text-align:center&quot;&gt;2. calculatePrice(seat, selected category)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="349" />
+            <mxPoint as="targetPoint" x="1520" y="349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active1" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="349" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message2" value="&lt;div style=&quot;text-align:center&quot;&gt;3. Displayed price for assigned offer / eligible Early Bird&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1520" y="449" />
+            <mxPoint as="targetPoint" x="370" y="449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message3" value="&lt;div style=&quot;text-align:center&quot;&gt;4. Confirm simulated checkout&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="549" />
+            <mxPoint as="targetPoint" x="370" y="549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active3" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="365" y="549" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message4" value="&lt;div style=&quot;text-align:center&quot;&gt;5. purchase(session, request)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="649" />
+            <mxPoint as="targetPoint" x="600" y="649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active4" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="649" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message5" value="&lt;div style=&quot;text-align:center&quot;&gt;6. requireCustomer(session)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="749" />
+            <mxPoint as="targetPoint" x="1290" y="749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active5" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="749" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message6" value="&lt;div style=&quot;text-align:center&quot;&gt;7. purchase(session, request)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="849" />
+            <mxPoint as="targetPoint" x="830" y="849" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active6" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="825" y="849" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message7" value="&lt;div style=&quot;text-align:center&quot;&gt;8. purchase(session, request)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="949" />
+            <mxPoint as="targetPoint" x="1060" y="949" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active7" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1055" y="949" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message8" value="&lt;div style=&quot;text-align:center&quot;&gt;9. BEGIN; lock event; load saved seat and current offer&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1049" />
+            <mxPoint as="targetPoint" x="1980" y="1049" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active8" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1975" y="1049" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message9" value="&lt;div style=&quot;text-align:center&quot;&gt;10. UPDATE AVAILABLE → SOLD; require one affected row&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1149" />
+            <mxPoint as="targetPoint" x="1980" y="1149" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active9" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1975" y="1149" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message10" value="&lt;div style=&quot;text-align:center&quot;&gt;11. calculatePrice(savedSeat, requested category)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1249" />
+            <mxPoint as="targetPoint" x="1520" y="1249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active10" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="1249" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message11" value="&lt;div style=&quot;text-align:center&quot;&gt;12. Validated current offer price&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1520" y="1349" />
+            <mxPoint as="targetPoint" x="1060" y="1349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message12" value="&lt;div style=&quot;text-align:center&quot;&gt;13. processSimulatedPayment(amount, simulateSuccess)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1449" />
+            <mxPoint as="targetPoint" x="1750" y="1449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active12" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1745" y="1449" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message13" value="&lt;div style=&quot;text-align:center&quot;&gt;14. Generated demo reference or decline exception&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1750" y="1549" />
+            <mxPoint as="targetPoint" x="1060" y="1549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message14" value="&lt;div style=&quot;text-align:center&quot;&gt;15. [failure / seat conflict / SQL error] ROLLBACK&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1649" />
+            <mxPoint as="targetPoint" x="1980" y="1649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active14" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1975" y="1649" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message15" value="&lt;div style=&quot;text-align:center&quot;&gt;16. [failure] Error; no issued ticket or receipt&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1749" />
+            <mxPoint as="targetPoint" x="370" y="1749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message16" value="&lt;div style=&quot;text-align:center&quot;&gt;17. [success] INSERT ticket snapshot, payment and receipt; COMMIT&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1849" />
+            <mxPoint as="targetPoint" x="1980" y="1849" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active16" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1975" y="1849" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message17" value="&lt;div style=&quot;text-align:center&quot;&gt;18. [success] Load and return saved&lt;br&gt;Ticket&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1949" />
+            <mxPoint as="targetPoint" x="830" y="1949" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message18" value="&lt;div style=&quot;text-align:center&quot;&gt;19. [success] Ticket&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="2049" />
+            <mxPoint as="targetPoint" x="600" y="2049" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message19" value="&lt;div style=&quot;text-align:center&quot;&gt;20. [success] Ticket&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="2149" />
+            <mxPoint as="targetPoint" x="370" y="2149" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message20" value="&lt;div style=&quot;text-align:center&quot;&gt;21. [success] Display saved ticket&lt;br&gt;and receipt&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="2249" />
+            <mxPoint as="targetPoint" x="140" y="2249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="notes" value="VenueBrowser opens a selected section in SeatGrid; the same seatSelected callback updates OpenEventUI. No hold or RESERVED state is created before checkout. The conditional AVAILABLE claim and unique active-seat index prevent two active bookings. A renamed offer invalidates a stale requested type name; saved offer prices are used. All payment outcomes are simulated." style="shape=note;whiteSpace=wrap;html=1;spacing=15;align=left;verticalAlign=middle;fontSize=18;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="2483" width="2110" height="146" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="04 · Cancellation and simulated refund">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1710" pageHeight="2166">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="04 · Cancellation and simulated refund" style="text;html=1;align=left;fontSize=24;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="15" width="1650" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation sequence · solid arrows: calls · dashed arrows: returns · bracketed text: guards" style="text;html=1;align=left;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="70" width="1650" height="35" />
+        </mxCell>
+        <mxCell id="head0" value="Actor:&lt;br&gt;Customer / Host" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="45" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life0" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="180" />
+            <mxPoint as="targetPoint" x="140" y="1934" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head1" value="ui:&lt;br&gt;OpenEventUI" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="275" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life1" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="180" />
+            <mxPoint as="targetPoint" x="370" y="1934" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head2" value="controller:&lt;br&gt;BookingController" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="505" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life2" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="180" />
+            <mxPoint as="targetPoint" x="600" y="1934" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head3" value="system:&lt;br&gt;BookingSystem" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="735" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life3" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="180" />
+            <mxPoint as="targetPoint" x="830" y="1934" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head4" value="repo:&lt;br&gt;BookingRepository" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="965" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life4" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="180" />
+            <mxPoint as="targetPoint" x="1060" y="1934" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head5" value="security:&lt;br&gt;SecurityService" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1195" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life5" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="180" />
+            <mxPoint as="targetPoint" x="1290" y="1934" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head6" value="db:&lt;br&gt;MariaDB" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1425" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life6" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1520" y="180" />
+            <mxPoint as="targetPoint" x="1520" y="1934" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="frame0" value="alt rejected / eligible cancellation" style="shape=umlFrame;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=none;strokeColor=#AAAAAA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1006" width="1650" height="749" />
+        </mxCell>
+        <mxCell id="split0" style="dashed=1;endArrow=none;strokeColor=#AAAAAA;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="30" y="1210" />
+            <mxPoint as="targetPoint" x="1680" y="1210" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message0" value="&lt;div style=&quot;text-align:center&quot;&gt;1. Select ticket; request eligible&lt;br&gt;cancellation&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="249" />
+            <mxPoint as="targetPoint" x="370" y="249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active0" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="365" y="249" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message1" value="&lt;div style=&quot;text-align:center&quot;&gt;2. cancel(session, ticketId)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="349" />
+            <mxPoint as="targetPoint" x="600" y="349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active1" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="349" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message2" value="&lt;div style=&quot;text-align:center&quot;&gt;3. cancel(session, ticketId)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="449" />
+            <mxPoint as="targetPoint" x="830" y="449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active2" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="825" y="449" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message3" value="&lt;div style=&quot;text-align:center&quot;&gt;4. cancel(session, ticketId)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="549" />
+            <mxPoint as="targetPoint" x="1060" y="549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active3" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1055" y="549" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message4" value="&lt;div style=&quot;text-align:center&quot;&gt;5. BEGIN; find event; lock event and ticket/payment&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="649" />
+            <mxPoint as="targetPoint" x="1520" y="649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active4" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="649" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message5" value="&lt;div style=&quot;text-align:center&quot;&gt;6. [Host] requireHost(session,&lt;br&gt;event.hostId)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="749" />
+            <mxPoint as="targetPoint" x="1290" y="749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active5" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="749" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message6" value="&lt;div style=&quot;text-align:center&quot;&gt;7. [Customer] verify ticket.customerId&lt;br&gt;matches session&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="849" />
+            <Array as="points">
+              <mxPoint x="1130" y="849" />
+              <mxPoint x="1130" y="879" />
+            </Array>
+            <mxPoint as="targetPoint" x="1060" y="879" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message7" value="&lt;div style=&quot;text-align:center&quot;&gt;8. Require VALID +&lt;br&gt;SIMULATED_SUCCESS + before event&lt;br&gt;start&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="949" />
+            <Array as="points">
+              <mxPoint x="1130" y="949" />
+              <mxPoint x="1130" y="979" />
+            </Array>
+            <mxPoint as="targetPoint" x="1060" y="979" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message8" value="&lt;div style=&quot;text-align:center&quot;&gt;9. [not eligible / not authorized / write error]&lt;br&gt;ROLLBACK&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1049" />
+            <mxPoint as="targetPoint" x="1520" y="1049" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active8" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="1049" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message9" value="&lt;div style=&quot;text-align:center&quot;&gt;10. [rejected] Show cancellation error&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1149" />
+            <mxPoint as="targetPoint" x="370" y="1149" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message10" value="&lt;div style=&quot;text-align:center&quot;&gt;11. [eligible] Save CANCELLED +&lt;br&gt;SIMULATED_REFUNDED; release seat&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1249" />
+            <mxPoint as="targetPoint" x="1520" y="1249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active10" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="1249" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message11" value="&lt;div style=&quot;text-align:center&quot;&gt;12. [eligible] COMMIT together&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1349" />
+            <mxPoint as="targetPoint" x="1520" y="1349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active11" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="1349" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message12" value="&lt;div style=&quot;text-align:center&quot;&gt;13. [eligible] Return completion&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1449" />
+            <mxPoint as="targetPoint" x="830" y="1449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message13" value="&lt;div style=&quot;text-align:center&quot;&gt;14. [eligible] Return completion&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="1549" />
+            <mxPoint as="targetPoint" x="600" y="1549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message14" value="&lt;div style=&quot;text-align:center&quot;&gt;15. [eligible] Return completion&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="1649" />
+            <mxPoint as="targetPoint" x="370" y="1649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message15" value="&lt;div style=&quot;text-align:center&quot;&gt;16. [eligible] Refresh tickets / Host&lt;br&gt;dashboard&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="1749" />
+            <mxPoint as="targetPoint" x="140" y="1749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="notes" value="The original ticket category and amount remain historical snapshots. A released seat uses the current ticket offer for any future sale. USED, already CANCELLED and started-event tickets cannot receive this simulated refund. No bank or payment gateway is called." style="shape=note;whiteSpace=wrap;html=1;spacing=15;align=left;verticalAlign=middle;fontSize=18;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1983" width="1650" height="146" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="05 · Host validation and one-time ticket check-in">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1710" pageHeight="2266">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="05 · Host validation and one-time ticket check-in" style="text;html=1;align=left;fontSize=24;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="15" width="1650" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation sequence · solid arrows: calls · dashed arrows: returns · bracketed text: guards" style="text;html=1;align=left;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="70" width="1650" height="35" />
+        </mxCell>
+        <mxCell id="head0" value="Actor:&lt;br&gt;Host" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="45" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life0" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="180" />
+            <mxPoint as="targetPoint" x="140" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head1" value="ui:&lt;br&gt;OpenEventUI" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="275" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life1" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="180" />
+            <mxPoint as="targetPoint" x="370" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head2" value="controller:&lt;br&gt;BookingController" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="505" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life2" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="180" />
+            <mxPoint as="targetPoint" x="600" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head3" value="system:&lt;br&gt;BookingSystem" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="735" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life3" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="180" />
+            <mxPoint as="targetPoint" x="830" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head4" value="repo:&lt;br&gt;BookingRepository" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="965" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life4" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="180" />
+            <mxPoint as="targetPoint" x="1060" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head5" value="security:&lt;br&gt;SecurityService" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1195" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life5" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="180" />
+            <mxPoint as="targetPoint" x="1290" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head6" value="db:&lt;br&gt;MariaDB" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1425" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life6" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1520" y="180" />
+            <mxPoint as="targetPoint" x="1520" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="frame0" value="alt invalid entry / valid entry" style="shape=umlFrame;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=none;strokeColor=#AAAAAA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1206" width="1650" height="649" />
+        </mxCell>
+        <mxCell id="split0" style="dashed=1;endArrow=none;strokeColor=#AAAAAA;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="30" y="1410" />
+            <mxPoint as="targetPoint" x="1680" y="1410" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message0" value="&lt;div style=&quot;text-align:center&quot;&gt;1. Select event; enter ticket code&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="249" />
+            <mxPoint as="targetPoint" x="370" y="249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active0" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="365" y="249" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message1" value="&lt;div style=&quot;text-align:center&quot;&gt;2. checkIn(session, eventId, code)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="349" />
+            <mxPoint as="targetPoint" x="600" y="349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active1" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="349" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message2" value="&lt;div style=&quot;text-align:center&quot;&gt;3. Require Host session&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="449" />
+            <Array as="points">
+              <mxPoint x="670" y="449" />
+              <mxPoint x="670" y="479" />
+            </Array>
+            <mxPoint as="targetPoint" x="600" y="479" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message3" value="&lt;div style=&quot;text-align:center&quot;&gt;4. checkIn(session, eventId, code)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="549" />
+            <mxPoint as="targetPoint" x="830" y="549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active3" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="825" y="549" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message4" value="&lt;div style=&quot;text-align:center&quot;&gt;5. checkIn(session, eventId, code)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="649" />
+            <mxPoint as="targetPoint" x="1060" y="649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active4" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1055" y="649" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message5" value="&lt;div style=&quot;text-align:center&quot;&gt;6. BEGIN; lock event&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="749" />
+            <mxPoint as="targetPoint" x="1520" y="749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active5" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="749" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message6" value="&lt;div style=&quot;text-align:center&quot;&gt;7. requireHost(session, saved&lt;br&gt;event.hostId)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="849" />
+            <mxPoint as="targetPoint" x="1290" y="849" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active6" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="849" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message7" value="&lt;div style=&quot;text-align:center&quot;&gt;8. Load code + selected event; lock ticket and payment&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="949" />
+            <mxPoint as="targetPoint" x="1520" y="949" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active7" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="949" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message8" value="&lt;div style=&quot;text-align:center&quot;&gt;9. Require VALID ticket and&lt;br&gt;SIMULATED_SUCCESS payment&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1049" />
+            <Array as="points">
+              <mxPoint x="1130" y="1049" />
+              <mxPoint x="1130" y="1079" />
+            </Array>
+            <mxPoint as="targetPoint" x="1060" y="1079" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message9" value="&lt;div style=&quot;text-align:center&quot;&gt;10. Conditionally UPDATE VALID → USED; require&lt;br&gt;one affected row&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1149" />
+            <mxPoint as="targetPoint" x="1520" y="1149" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active9" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="1149" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message10" value="&lt;div style=&quot;text-align:center&quot;&gt;11. [wrong event / invalid state / repeat / unauthorized]&lt;br&gt;ROLLBACK&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1249" />
+            <mxPoint as="targetPoint" x="1520" y="1249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active10" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="1249" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message11" value="&lt;div style=&quot;text-align:center&quot;&gt;12. [rejected] Entry error&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1349" />
+            <mxPoint as="targetPoint" x="370" y="1349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message12" value="&lt;div style=&quot;text-align:center&quot;&gt;13. [valid] COMMIT USED state&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1449" />
+            <mxPoint as="targetPoint" x="1520" y="1449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active12" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1515" y="1449" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message13" value="&lt;div style=&quot;text-align:center&quot;&gt;14. [valid] Return guest name&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="1549" />
+            <mxPoint as="targetPoint" x="830" y="1549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message14" value="&lt;div style=&quot;text-align:center&quot;&gt;15. [valid] Guest name&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="1649" />
+            <mxPoint as="targetPoint" x="600" y="1649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message15" value="&lt;div style=&quot;text-align:center&quot;&gt;16. [valid] Guest name&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="1749" />
+            <mxPoint as="targetPoint" x="370" y="1749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message16" value="&lt;div style=&quot;text-align:center&quot;&gt;17. [valid] Welcome guest; refresh&lt;br&gt;saved counts&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="1849" />
+            <mxPoint as="targetPoint" x="140" y="1849" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="notes" value="Manual ticket-code entry only. Wrong-event, CANCELLED and USED tickets are rejected. Conditional status change accepts exactly one check-in. Ticket type display names can change without changing the historical ticket code or validity. No QR scanner, camera or live entry broadcasting is implemented." style="shape=note;whiteSpace=wrap;html=1;spacing=15;align=left;verticalAlign=middle;fontSize=18;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="2083" width="1650" height="146" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="06 · Host event monitoring and manual refresh">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1500" pageHeight="2266">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="06 · Host event monitoring and manual refresh" style="text;html=1;align=left;fontSize=24;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="15" width="1440" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Implementation sequence · solid arrows: calls · dashed arrows: returns · bracketed text: guards" style="text;html=1;align=left;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="70" width="1440" height="35" />
+        </mxCell>
+        <mxCell id="head0" value="Actor:&lt;br&gt;Host" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="45" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life0" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="180" />
+            <mxPoint as="targetPoint" x="140" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head1" value="ui:&lt;br&gt;OpenEventUI" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="275" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life1" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="180" />
+            <mxPoint as="targetPoint" x="370" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head2" value="repo:&lt;br&gt;BookingRepository" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="505" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life2" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="180" />
+            <mxPoint as="targetPoint" x="600" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head3" value="plans:&lt;br&gt;VenuePlanRepository" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="735" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life3" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="180" />
+            <mxPoint as="targetPoint" x="830" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="head4" value="db:&lt;br&gt;MariaDB" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontSize=18;fillColor=#F3EEFF;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="965" y="120" width="190" height="60" />
+        </mxCell>
+        <mxCell id="life4" style="dashed=1;endArrow=none;strokeColor=#888888;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="180" />
+            <mxPoint as="targetPoint" x="1060" y="2034" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message0" value="&lt;div style=&quot;text-align:center&quot;&gt;1. Open dashboard / press Refresh&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="249" />
+            <mxPoint as="targetPoint" x="370" y="249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active0" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="365" y="249" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message1" value="&lt;div style=&quot;text-align:center&quot;&gt;2. events(session, search)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="349" />
+            <mxPoint as="targetPoint" x="600" y="349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active1" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="349" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message2" value="&lt;div style=&quot;text-align:center&quot;&gt;3. SELECT events WHERE host_id = signed-in Host&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="449" />
+            <mxPoint as="targetPoint" x="1060" y="449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active2" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1055" y="449" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message3" value="&lt;div style=&quot;text-align:center&quot;&gt;4. Owned event rows&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1060" y="549" />
+            <mxPoint as="targetPoint" x="600" y="549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message4" value="&lt;div style=&quot;text-align:center&quot;&gt;5. List&amp;lt;Event&amp;gt;&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="649" />
+            <mxPoint as="targetPoint" x="370" y="649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message5" value="&lt;div style=&quot;text-align:center&quot;&gt;6. Choose an owned event&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="140" y="749" />
+            <mxPoint as="targetPoint" x="370" y="749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active5" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="365" y="749" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message6" value="&lt;div style=&quot;text-align:center&quot;&gt;7. tickets(session, eventId)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="849" />
+            <mxPoint as="targetPoint" x="600" y="849" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active6" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="849" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message7" value="&lt;div style=&quot;text-align:center&quot;&gt;8. SELECT ticket/payment/receipt rows filtered by&lt;br&gt;event and owner&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="949" />
+            <mxPoint as="targetPoint" x="1060" y="949" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active7" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1055" y="949" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message8" value="&lt;div style=&quot;text-align:center&quot;&gt;9. List&amp;lt;Ticket&amp;gt;&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="1049" />
+            <mxPoint as="targetPoint" x="370" y="1049" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message9" value="&lt;div style=&quot;text-align:center&quot;&gt;10. layout(eventId)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="1149" />
+            <mxPoint as="targetPoint" x="600" y="1149" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active9" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="1149" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message10" value="&lt;div style=&quot;text-align:center&quot;&gt;11. Read venue_layouts and saved seats / offers&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="1249" />
+            <mxPoint as="targetPoint" x="1060" y="1249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active10" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1055" y="1249" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message11" value="&lt;div style=&quot;text-align:center&quot;&gt;12. read(connection, eventId)&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="1349" />
+            <mxPoint as="targetPoint" x="830" y="1349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active11" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="825" y="1349" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message12" value="&lt;div style=&quot;text-align:center&quot;&gt;13. Read optional venue_plans and&lt;br&gt;venue_areas&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="1449" />
+            <mxPoint as="targetPoint" x="1060" y="1449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="active12" value="" style="rounded=0;fillColor=#E6DCF7;strokeColor=#68508A;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1055" y="1449" width="10" height="41" />
+        </mxCell>
+        <mxCell id="message13" value="&lt;div style=&quot;text-align:center&quot;&gt;14. VenuePlan or null for legacy grid&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="830" y="1549" />
+            <mxPoint as="targetPoint" x="600" y="1549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message14" value="&lt;div style=&quot;text-align:center&quot;&gt;15. VenueLayout&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="600" y="1649" />
+            <mxPoint as="targetPoint" x="370" y="1649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message15" value="&lt;div style=&quot;text-align:center&quot;&gt;16. displayHostOverview(): count capacity,&lt;br&gt;valid/used tickets and totals&lt;/div&gt;" style="endArrow=block;endFill=1;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="1749" />
+            <Array as="points">
+              <mxPoint x="440" y="1749" />
+              <mxPoint x="440" y="1779" />
+            </Array>
+            <mxPoint as="targetPoint" x="370" y="1779" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="message16" value="&lt;div style=&quot;text-align:center&quot;&gt;17. Display saved inventory,&lt;br&gt;simulated net sales and check-in&lt;br&gt;count&lt;/div&gt;" style="dashed=1;endArrow=open;html=1;fontSize=18;labelBackgroundColor=#FFFFFF;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="370" y="1849" />
+            <mxPoint as="targetPoint" x="140" y="1849" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="notes" value="No EventSummary projection class or live refresh service exists. OpenEventUI calculates displayed counts and simulated totals with ordinary loops over saved records. Customer discovery shows only published future events. A Host sees only owned events. Layouts and offers are saved per event; monitoring is manually refreshed." style="shape=note;whiteSpace=wrap;html=1;spacing=15;align=left;verticalAlign=middle;fontSize=18;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="2083" width="1440" height="146" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,10 @@
+# Local configuration and secrets
+config.properties
+
+# Maven build output
+target/
+
+# IDE files
+.idea/
+*.iml
+.nb-gradle/
