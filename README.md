@@ -64,7 +64,7 @@ src/test/       Verification checks
 lib/            Runtime libraries
 ```
 
-## Security
+
 
 Never commit passwords, database credentials, tokens, private URLs, local
 machine paths, or generated build output. Use environment variables or the
