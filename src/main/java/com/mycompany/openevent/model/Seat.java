@@ -1,10 +1,8 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.model;
 
 // Defines the Seat class and keeps its related data and operations together.
 public class Seat {
+
     // Stores id.
     private final long id;
     // Stores row.
@@ -22,19 +20,32 @@ public class Seat {
     // Optional custom offer and physical area; old grid seats keep legacy pricing.
     private TicketType ticketType;
     private String areaCode;
-    public Seat(long id,int row,int column,String label,TicketType type,String status,String areaCode) {
-        this(id,row,column,label,type.getName(),type.getColor(),status);
-        this.ticketType=type;
-        this.areaCode=areaCode;
+
+    public Seat(long id, int row, int column, String label, TicketType type, String status, String areaCode) {
+        this(id, row, column, label, type.getName(), type.getColor(), status);
+        this.ticketType = type;
+        this.areaCode = areaCode;
     }
-    public TicketType getTicketType() { return ticketType; }
-    public String getAreaCode() { return areaCode; }
+
+    public TicketType getTicketType() {
+        return ticketType;
+    }
+
+    public String getAreaCode() {
+        return areaCode;
+    }
+
     public String getTypeCode() {
-        if (ticketType != null) { return ticketType.getCode(); }
+        if (ticketType != null) {
+            return ticketType.getCode();
+        }
         return category;
     }
+
     public boolean allowsEarlyBird() {
-        if (ticketType != null) { return ticketType.hasEarlyBird(); }
+        if (ticketType != null) {
+            return ticketType.hasEarlyBird();
+        }
         return "REGULAR".equals(category);
     }
 

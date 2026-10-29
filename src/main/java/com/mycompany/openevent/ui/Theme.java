@@ -1,6 +1,3 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.ui;
 
 // Imports JButton so this class can use that type by its short name.
@@ -76,8 +73,7 @@ public final class Theme {
         try {
             // Calls this operation to carry out the named step with the supplied arguments.
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-        }
-        // Handles this error without reporting the failed operation as a success.
+        } // Handles this error without reporting the failed operation as a success.
         catch (Exception ignored) {
         }
         // Stores this value under its key so it can be found again later.
@@ -106,7 +102,9 @@ public final class Theme {
         // Visits each object in the collection using an ordinary enhanced for loop.
         for (Component c : root.getComponents()) {
             // Darker secondary text remains readable on the light page background.
-            if(new Color(130,124,145).equals(c.getForeground())) { c.setForeground(MUTED); }
+            if (new Color(130, 124, 145).equals(c.getForeground())) {
+                c.setForeground(MUTED);
+            }
             // Continues into this block only when the condition below is true.
             if (c instanceof JButton) {
                 // Prepares the local b value used in the following steps.
@@ -256,8 +254,7 @@ public final class Theme {
                         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
                         // Draws the scaled image, centered so it fills the panel.
                         g.drawImage(img, (getWidth() - w) / 2, (getHeight() - h) / 2, w, h, null);
-                    }
-                    // Handles the remaining case after the earlier condition was false.
+                    } // Handles the remaining case after the earlier condition was false.
                     else {
                         // Calls this operation to carry out the named step with the supplied arguments.
                         g.setPaint(new GradientPaint(0, 0, PURPLE, getWidth(), getHeight(), INK));
@@ -277,11 +274,9 @@ public final class Theme {
                         // Calls this operation to carry out the named step with the supplied arguments.
                         g.drawString(caption, 18, getHeight() - 23);
                     }
-                }
-                // Handles this error without reporting the failed operation as a success.
+                } // Handles this error without reporting the failed operation as a success.
                 catch (java.io.IOException ignored) {
-                }
-                // Runs this cleanup whether the preceding operation succeeds or fails.
+                } // Runs this cleanup whether the preceding operation succeeds or fails.
                 finally {
                     // Releases the temporary graphics context after painting.
                     g.dispose();

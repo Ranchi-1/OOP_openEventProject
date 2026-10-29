@@ -1,6 +1,3 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.ui;
 
 // Imports Host so this class can use that type by its short name.
@@ -160,10 +157,13 @@ import java.util.Map;
 // Imports ExecutionException so this class can use that type by its short name.
 import java.util.concurrent.ExecutionException;
 
-/** Coordinates screens using named methods and conventional Swing listeners. */
+/**
+ * Coordinates screens using named methods and conventional Swing listeners.
+ */
 @SuppressWarnings("unchecked")
 // Defines a class that inherits the fields and behavior of its parent type.
 public class OpenEventUI extends JFrame implements ActionListener {
+
     // Stores the object that reads and writes database records.
     private final BookingRepository repository = new BookingRepository();
     // Stores the object that coordinates booking requests.
@@ -254,19 +254,19 @@ public class OpenEventUI extends JFrame implements ActionListener {
         }
         // Calls this operation to carry out the named step with the supplied arguments.
         // Fit the working desktop so the title bar, footer and taskbar remain reachable.
-        java.awt.GraphicsConfiguration display=getGraphicsConfiguration();
-        java.awt.Rectangle displayBounds=display.getBounds();
-        java.awt.Insets reserved=java.awt.Toolkit.getDefaultToolkit().getScreenInsets(display);
-        int availableWidth=displayBounds.width-reserved.left-reserved.right;
-        int availableHeight=displayBounds.height-reserved.top-reserved.bottom;
-        int minimumWidth=Math.min(1000,availableWidth);
-        int minimumHeight=Math.min(700,availableHeight);
-        setMinimumSize(new Dimension(minimumWidth,minimumHeight));
-        int windowWidth=Math.max(minimumWidth,Math.min(1240,availableWidth-20));
-        int windowHeight=Math.max(minimumHeight,Math.min(810,availableHeight-20));
-        setSize(windowWidth,windowHeight);
-        setLocation(displayBounds.x+reserved.left+(availableWidth-windowWidth)/2,
-            displayBounds.y+reserved.top+(availableHeight-windowHeight)/2);
+        java.awt.GraphicsConfiguration display = getGraphicsConfiguration();
+        java.awt.Rectangle displayBounds = display.getBounds();
+        java.awt.Insets reserved = java.awt.Toolkit.getDefaultToolkit().getScreenInsets(display);
+        int availableWidth = displayBounds.width - reserved.left - reserved.right;
+        int availableHeight = displayBounds.height - reserved.top - reserved.bottom;
+        int minimumWidth = Math.min(1000, availableWidth);
+        int minimumHeight = Math.min(700, availableHeight);
+        setMinimumSize(new Dimension(minimumWidth, minimumHeight));
+        int windowWidth = Math.max(minimumWidth, Math.min(1240, availableWidth - 20));
+        int windowHeight = Math.max(minimumHeight, Math.min(810, availableHeight - 20));
+        setSize(windowWidth, windowHeight);
+        setLocation(displayBounds.x + reserved.left + (availableWidth - windowWidth) / 2,
+                displayBounds.y + reserved.top + (availableHeight - windowHeight) / 2);
         // Connects this control to the named event-handler command.
         connectButton(navigation.discover, "navigate");
         // Connects this control to the named event-handler command.
@@ -278,8 +278,13 @@ public class OpenEventUI extends JFrame implements ActionListener {
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent event) {
-                if(busy) { info("Please wait for the current request to finish before closing.");return; }
-                if(confirmLeaveEditor()) { dispose(); }
+                if (busy) {
+                    info("Please wait for the current request to finish before closing.");
+                    return;
+                }
+                if (confirmLeaveEditor()) {
+                    dispose();
+                }
             }
         });
         showLogin();
@@ -319,18 +324,18 @@ public class OpenEventUI extends JFrame implements ActionListener {
         }
         // Prepares the local command value used in the following steps.
         String command = event.getActionCommand();
-        if(("navigate".equals(command) || "editorBack".equals(command) || "logout".equals(command)) && !confirmLeaveEditor()) { return; }
+        if (("navigate".equals(command) || "editorBack".equals(command) || "logout".equals(command)) && !confirmLeaveEditor()) {
+            return;
+        }
         // Continues into this block only when the condition below is true.
         if ("navigate".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             discover();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("myTickets".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             showTickets(null);
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("logout".equals(command)) {
             // Updates this working value before the next step.
             session = null;
@@ -340,95 +345,77 @@ public class OpenEventUI extends JFrame implements ActionListener {
             currentSeat = null;
             // Calls this operation to carry out the named step with the supplied arguments.
             showLogin();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("login".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             signIn();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("registerHost".equals(command)) {
             registerAccount(true);
-        }
-        else if ("register".equals(command)) {
+        } else if ("register".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             registerAccount(false);
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("search".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             loadEvents();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if (command.startsWith("openEvent:")) {
             // Prepares the local event id value used in the following steps.
             long eventId = Long.parseLong(command.substring("openEvent:".length()));
             // Calls this operation to carry out the named step with the supplied arguments.
             openEvent(eventId);
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("price".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             updatePrice();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("checkout".equals(command)) {
             // Updates this working value before the next step.
             currentCategory = (String) eventView.category.getSelectedItem();
             // Calls this operation to carry out the named step with the supplied arguments.
             showCheckout();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("backToSeats".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             openEvent(currentEvent.getId());
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("pay".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             payForTicket();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("saveReceipt".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             saveSelectedReceipt();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("cancelCustomer".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             requestCancellation(ticketList.getSelectedValue());
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("hostSelect".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             loadHostOverview();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("hostRefresh".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             showHostDashboard(selectedHostEventId());
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("createEvent".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             showEditor(null, null, false);
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("editEvent".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             editSelectedEvent();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("checkIn".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             checkInTicket();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("cancelHost".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             cancelHostSelection();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("editorBack".equals(command)) {
             // Prepares the local event id value used in the following steps.
             long eventId = 0;
@@ -439,28 +426,23 @@ public class OpenEventUI extends JFrame implements ActionListener {
             }
             // Calls this operation to carry out the named step with the supplied arguments.
             showHostDashboard(eventId);
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("rebuildGrid".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             rebuildEditorGrid();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("vipColor".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             chooseSectionColor(true);
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("regularColor".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             chooseSectionColor(false);
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if (command.startsWith("editSeat:")) {
             // Calls this operation to carry out the named step with the supplied arguments.
             changeEditorSeat(command.substring("editSeat:".length()));
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("saveEvent".equals(command)) {
             // Calls this operation to carry out the named step with the supplied arguments.
             saveEditorEvent();
@@ -469,20 +451,23 @@ public class OpenEventUI extends JFrame implements ActionListener {
 
     // Displays a panel and refreshes navigation for the signed-in role.
     private boolean confirmLeaveEditor() {
-        if(editorView==null || currentView!=editorView) { return true; }
-        Object[] options={"Keep editing","Leave without saving"};
-        int choice=JOptionPane.showOptionDialog(this,"Have you saved this event? Unsaved event, venue and ticket-type changes will be lost.",
-            "Leave event editor",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,options,options[0]);
-        return choice==1;
+        if (editorView == null || currentView != editorView) {
+            return true;
+        }
+        Object[] options = {"Keep editing", "Leave without saving"};
+        int choice = JOptionPane.showOptionDialog(this, "Have you saved this event? Unsaved event, venue and ticket-type changes will be lost.",
+                "Leave event editor", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+        return choice == 1;
     }
+
     private void screen(JPanel view) {
-        currentView=view;
+        currentView = view;
         // Calls this operation to carry out the named step with the supplied arguments.
         getRootPane().setDefaultButton(null);
         // Calls this operation to carry out the named step with the supplied arguments.
         Theme.polish(view);
         // Places the requested content inside the scroll pane.
-        viewport.setViewportView(new ResponsiveView(view,1176));
+        viewport.setViewportView(new ResponsiveView(view, 1176));
         // Calls this operation to carry out the named step with the supplied arguments.
         viewport.getVerticalScrollBar().setValue(0);
         // Prepares the local signed in value used in the following steps.
@@ -507,15 +492,14 @@ public class OpenEventUI extends JFrame implements ActionListener {
                 role = "Host";
                 // Displays this text in the named Swing component.
                 navigation.discover.setText("Dashboard");
-            }
-            // Handles the remaining case after the earlier condition was false.
+            } // Handles the remaining case after the earlier condition was false.
             else {
                 // Shows or hides this component for the current screen state.
                 navigation.tickets.setVisible(true);
             }
             // Displays this text in the named Swing component.
             navigation.identity.setText(session.getUser().getName() + " · " + role);
-            navigation.identity.setToolTipText(session.getUser().getName()+" · "+role);
+            navigation.identity.setToolTipText(session.getUser().getName() + " · " + role);
         }
         // Asks Swing to recalculate the layout after components change.
         revalidate();
@@ -537,11 +521,10 @@ public class OpenEventUI extends JFrame implements ActionListener {
             exception.printStackTrace();
             // Calls this operation to carry out the named step with the supplied arguments.
             JOptionPane.showMessageDialog(this,
-            "The database request failed. Check XAMPP MySQL on port 3307 and config.properties.\n"
-            + "A purchase is successful only after it is saved.",
-            "Database unavailable", JOptionPane.ERROR_MESSAGE);
-        }
-        // Handles the remaining case after the earlier condition was false.
+                    "The database request failed. Check XAMPP MySQL on port 3307 and config.properties.\n"
+                    + "A purchase is successful only after it is saved.",
+                    "Database unavailable", JOptionPane.ERROR_MESSAGE);
+        } // Handles the remaining case after the earlier condition was false.
         else {
             // Prepares the local message value used in the following steps.
             String message = exception.getMessage();
@@ -555,11 +538,15 @@ public class OpenEventUI extends JFrame implements ActionListener {
         }
     }
 
-    /** Runs database work off the drawing thread so the window stays responsive. */
+    /**
+     * Runs database work off the drawing thread so the window stays responsive.
+     */
     // Defines an abstract parent class; concrete subclasses provide the missing behavior.
     private abstract class ScreenTask extends SwingWorker<Void, Void> {
+
         // Runs database work in the background; it must not modify Swing controls.
         protected abstract void performTask() throws Exception;
+
         // Updates the screen after background work completes successfully.
         protected abstract void showResult();
 
@@ -583,13 +570,11 @@ public class OpenEventUI extends JFrame implements ActionListener {
                 get();
                 // Calls this operation to carry out the named step with the supplied arguments.
                 showResult();
-            }
-            // Handles this error without reporting the failed operation as a success.
+            } // Handles this error without reporting the failed operation as a success.
             catch (ExecutionException exception) {
                 // Calls this operation to carry out the named step with the supplied arguments.
                 failure(exception.getCause());
-            }
-            // Handles this error without reporting the failed operation as a success.
+            } // Handles this error without reporting the failed operation as a success.
             catch (InterruptedException exception) {
                 // Calls this operation to carry out the named step with the supplied arguments.
                 Thread.currentThread().interrupt();
@@ -635,8 +620,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
             setGlassPane(shield);
             // Shows or hides this component for the current screen state.
             shield.setVisible(true);
-        }
-        // Handles the remaining case after the earlier condition was false.
+        } // Handles the remaining case after the earlier condition was false.
         else {
             // Calls this operation to carry out the named step with the supplied arguments.
             setCursor(Cursor.getDefaultCursor());
@@ -650,7 +634,8 @@ public class OpenEventUI extends JFrame implements ActionListener {
         // Updates this working value before the next step.
         loginView = new LoginView();
         // Calls this operation to carry out the named step with the supplied arguments.
-        loginView.emailLabel.setLabelFor(loginView.email);loginView.passwordLabel.setLabelFor(loginView.password);
+        loginView.emailLabel.setLabelFor(loginView.email);
+        loginView.passwordLabel.setLabelFor(loginView.password);
         Theme.fillPhoto(loginView.photoPanel, "concert.jpg", "Between the Islands");
         // Connects this control to the named event-handler command.
         connectButton(loginView.signIn, "login");
@@ -672,10 +657,11 @@ public class OpenEventUI extends JFrame implements ActionListener {
         // Prepares the local password value used in the following steps.
         loginView.hidePassword();
         final char[] password = loginView.password.getPassword();
-        if(loginView.email.getText().trim().isEmpty() || password.length==0) {
-            java.util.Arrays.fill(password,'\0');
+        if (loginView.email.getText().trim().isEmpty() || password.length == 0) {
+            java.util.Arrays.fill(password, '\0');
             info("Enter your email address and password, then choose Customer or Host.");
-            loginView.email.requestFocusInWindow();return;
+            loginView.email.requestFocusInWindow();
+            return;
         }
 
         // Prepares the local host value used in the following steps.
@@ -684,12 +670,14 @@ public class OpenEventUI extends JFrame implements ActionListener {
         beginTask(new ScreenTask() {
             // Stores signed in session.
             private Session signedInSession;
+
             @Override
             // Runs database work in the background; it must not modify Swing controls.
             protected void performTask() throws Exception {
                 // Updates this working value before the next step.
                 signedInSession = security.login(email, password, host);
             }
+
             @Override
             // Updates the screen after background work completes successfully.
             protected void showResult() {
@@ -725,25 +713,33 @@ public class OpenEventUI extends JFrame implements ActionListener {
         panel.add(new JLabel("Password (at least 8 characters)"));
         // Adds this object to the collection or this child component to its parent container.
         // Registration uses an independent eye button and begins with masked text.
-        JPanel passwordPanel=new JPanel(new BorderLayout(6,0));
-        javax.swing.JToggleButton passwordToggle=new javax.swing.JToggleButton();
-        passwordToggle.setPreferredSize(new Dimension(45,36));
-        new PasswordVisibility(passwordField,passwordToggle);
-        passwordPanel.add(passwordField,BorderLayout.CENTER);
-        passwordPanel.add(passwordToggle,BorderLayout.EAST);
+        JPanel passwordPanel = new JPanel(new BorderLayout(6, 0));
+        javax.swing.JToggleButton passwordToggle = new javax.swing.JToggleButton();
+        passwordToggle.setPreferredSize(new Dimension(45, 36));
+        new PasswordVisibility(passwordField, passwordToggle);
+        passwordPanel.add(passwordField, BorderLayout.CENTER);
+        passwordPanel.add(passwordToggle, BorderLayout.EAST);
         panel.add(passwordPanel);
         // Prepares the local choice value used in the following steps.
         int choice;
-        while(true) {
-            String title="Create Customer account";
-            if(host) { title="Create Host account"; }
-            choice=JOptionPane.showConfirmDialog(this,panel,title,JOptionPane.OK_CANCEL_OPTION);
-            if(choice!=JOptionPane.OK_OPTION) { passwordField.setText("");return; }
-            String enteredName=nameField.getText().trim();
-            String enteredEmail=emailField.getText().trim();
-            char[] enteredPassword=passwordField.getPassword();
-            int passwordLength=enteredPassword.length;java.util.Arrays.fill(enteredPassword,'\0');
-            if(enteredName.length()>=2 && enteredName.length()<=100 && enteredEmail.matches("[^\\s@]+@[^\\s@]+\\.[^\\s@]+") && enteredEmail.length()<=190 && passwordLength>=8) { break; }
+        while (true) {
+            String title = "Create Customer account";
+            if (host) {
+                title = "Create Host account";
+            }
+            choice = JOptionPane.showConfirmDialog(this, panel, title, JOptionPane.OK_CANCEL_OPTION);
+            if (choice != JOptionPane.OK_OPTION) {
+                passwordField.setText("");
+                return;
+            }
+            String enteredName = nameField.getText().trim();
+            String enteredEmail = emailField.getText().trim();
+            char[] enteredPassword = passwordField.getPassword();
+            int passwordLength = enteredPassword.length;
+            java.util.Arrays.fill(enteredPassword, '\0');
+            if (enteredName.length() >= 2 && enteredName.length() <= 100 && enteredEmail.matches("[^\\s@]+@[^\\s@]+\\.[^\\s@]+") && enteredEmail.length() <= 190 && passwordLength >= 8) {
+                break;
+            }
             info("Enter a name of 2–100 characters, a valid email address, and a password of at least 8 characters.");
         }
         // Continues into this block only when the condition below is true.
@@ -761,16 +757,23 @@ public class OpenEventUI extends JFrame implements ActionListener {
                 // Runs database work in the background; it must not modify Swing controls.
                 protected void performTask() throws Exception {
                     // Calls this operation to carry out the named step with the supplied arguments.
-                    if(host) { security.registerHost(name,email,password); }
-                    else { security.registerCustomer(name,email,password); }
+                    if (host) {
+                        security.registerHost(name, email, password);
+                    } else {
+                        security.registerCustomer(name, email, password);
+                    }
                 }
+
                 @Override
                 // Updates the screen after background work completes successfully.
                 protected void showResult() {
                     // Calls this operation to carry out the named step with the supplied arguments.
                     loginView.email.setText(email);
-                    if(host) { loginView.role.setSelectedIndex(1); }
-                    else { loginView.role.setSelectedIndex(0); }
+                    if (host) {
+                        loginView.role.setSelectedIndex(1);
+                    } else {
+                        loginView.role.setSelectedIndex(0);
+                    }
                     loginView.password.requestFocusInWindow();
                     info("Account created. Your email is filled in; enter your password to sign in.");
                 }
@@ -784,13 +787,11 @@ public class OpenEventUI extends JFrame implements ActionListener {
         if (session == null) {
             // Calls this operation to carry out the named step with the supplied arguments.
             showLogin();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if (session.isHost()) {
             // Calls this operation to carry out the named step with the supplied arguments.
             showHostDashboard(0);
-        }
-        // Handles the remaining case after the earlier condition was false.
+        } // Handles the remaining case after the earlier condition was false.
         else {
             // Updates this working value before the next step.
             discoverView = new DiscoverView();
@@ -818,12 +819,14 @@ public class OpenEventUI extends JFrame implements ActionListener {
         beginTask(new ScreenTask() {
             // Stores events.
             private List<Event> events;
+
             @Override
             // Runs database work in the background; it must not modify Swing controls.
             protected void performTask() throws Exception {
                 // Updates this working value before the next step.
                 events = repository.events(session, search);
             }
+
             @Override
             // Updates the screen after background work completes successfully.
             protected void showResult() {
@@ -836,8 +839,11 @@ public class OpenEventUI extends JFrame implements ActionListener {
     // Builds visible event cards from the search results using a normal loop.
     private void displayEvents(List<Event> events) {
         // Displays this text in the named Swing component.
-        String eventWord="events";if(events.size()==1) { eventWord="event"; }
-        discoverView.count.setText(events.size()+" upcoming "+eventWord+" · Choose an event to view its seats and prices.");
+        String eventWord = "events";
+        if (events.size() == 1) {
+            eventWord = "event";
+        }
+        discoverView.count.setText(events.size() + " upcoming " + eventWord + " · Choose an event to view its seats and prices.");
         // Prepares the local cards value used in the following steps.
         EventCards cards = new EventCards();
         // Sets this component color; the gradient start/end colors form the purple theme.
@@ -920,6 +926,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
             private Event event;
             // Stores layout.
             private VenueLayout layout;
+
             @Override
             // Runs database work in the background; it must not modify Swing controls.
             protected void performTask() throws Exception {
@@ -928,6 +935,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                 // Updates this working value before the next step.
                 layout = repository.layout(eventId);
             }
+
             @Override
             // Updates the screen after background work completes successfully.
             protected void showResult() {
@@ -956,17 +964,18 @@ public class OpenEventUI extends JFrame implements ActionListener {
         // Chooses how child components are arranged inside this container.
         eventView.mapPanel.setLayout(new BorderLayout());
         // Prepares the local grid value used in the following steps.
-        SeatGrid.SeatSelectionListener selection=new SeatGrid.SeatSelectionListener() {
+        SeatGrid.SeatSelectionListener selection = new SeatGrid.SeatSelectionListener() {
             @Override
-            public void seatSelected(Seat seat) { chooseSeat(seat); }
+            public void seatSelected(Seat seat) {
+                chooseSeat(seat);
+            }
         };
-        if(layout.isFlexible()) {
+        if (layout.isFlexible()) {
             eventView.subtitle.setText("Choose a section, then an available seat. Your booking is saved after checkout.");
-            eventView.mapPanel.add(new VenueBrowser(layout,selection),BorderLayout.CENTER);
+            eventView.mapPanel.add(new VenueBrowser(layout, selection), BorderLayout.CENTER);
             eventView.legend.setText("Section colors show ticket types · Gray ×: sold · Gaps: aisles / blocked · Click a section to view seats");
-        }
-        else {
-            eventView.mapPanel.add(new SeatGrid(layout,selection),BorderLayout.CENTER);
+        } else {
+            eventView.mapPanel.add(new SeatGrid(layout, selection), BorderLayout.CENTER);
             eventView.legend.setText("Colors show ticket types · Gray ×: sold · Gaps: aisles · Select a seat to see its offer");
         }
         connectCombo(eventView.category, "price");
@@ -980,20 +989,23 @@ public class OpenEventUI extends JFrame implements ActionListener {
 
     // Remembers one selected seat and lists the pricing categories allowed for it.
     private void chooseSeat(Seat seat) {
-        if(seat==null) {
-            currentSeat=null;currentCategory=null;
+        if (seat == null) {
+            currentSeat = null;
+            currentCategory = null;
             eventView.selectedSeat.setText("Select a section to begin.");
             eventView.category.setModel(new DefaultComboBoxModel<String>());
-            eventView.category.setEnabled(false);eventView.checkout.setEnabled(false);
-            eventView.price.setText("Choose a seat");return;
+            eventView.category.setEnabled(false);
+            eventView.checkout.setEnabled(false);
+            eventView.price.setText("Choose a seat");
+            return;
         }
         eventView.category.setEnabled(true);
 
         // Updates this working value before the next step.
         currentSeat = seat;
         // Displays this text in the named Swing component.
-        eventView.selectedSeat.setText("<html><b>Seat "+Theme.html(seat.getLabel())+"</b><br>"+Theme.html(DisplayText.category(seat.getCategory()))+"</html>");
-        eventView.selectedSeat.setToolTipText(seat.getLabel()+" · "+seat.getCategory());
+        eventView.selectedSeat.setText("<html><b>Seat " + Theme.html(seat.getLabel()) + "</b><br>" + Theme.html(DisplayText.category(seat.getCategory())) + "</html>");
+        eventView.selectedSeat.setToolTipText(seat.getLabel() + " · " + seat.getCategory());
         // Prepares the local categories value used in the following steps.
         DefaultComboBoxModel<String> categories = new DefaultComboBoxModel<String>();
         // Adds this object to the list/combo model in display order.
@@ -1001,8 +1013,11 @@ public class OpenEventUI extends JFrame implements ActionListener {
         // Continues into this block only when the condition below is true.
         if (seat.allowsEarlyBird() && LocalDateTime.now().isBefore(currentEvent.getEarlyBirdUntil())) {
             // Adds this object to the list/combo model in display order.
-            if(seat.getTicketType()!=null) { categories.addElement(seat.getCategory()+" / Early Bird"); }
-            else { categories.addElement("EARLY_BIRD"); }
+            if (seat.getTicketType() != null) {
+                categories.addElement(seat.getCategory() + " / Early Bird");
+            } else {
+                categories.addElement("EARLY_BIRD");
+            }
         }
         // Supplies the list, combo-box or table data displayed by this control.
         eventView.category.setModel(categories);
@@ -1024,8 +1039,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                 BigDecimal price = currentEvent.calculatePrice(currentSeat, category);
                 // Displays this text in the named Swing component.
                 eventView.price.setText(Theme.money(price));
-            }
-            // Handles this error without reporting the failed operation as a success.
+            } // Handles this error without reporting the failed operation as a success.
             catch (RuntimeException exception) {
                 // Calls this operation to carry out the named step with the supplied arguments.
                 failure(exception);
@@ -1046,8 +1060,8 @@ public class OpenEventUI extends JFrame implements ActionListener {
         checkoutView.attendee.setText("Attendee: " + session.getUser().getName() + " · " + session.getUser().getEmail());
         // Displays this text in the named Swing component.
         checkoutView.summary.setText("<html><b>" + Theme.html(currentEvent.getTitle()) + "</b><br>"
-        + currentEvent.getStartsAt().format(displayDate) + "<br>Seat " + currentSeat.getLabel()
-        + " · " + Theme.html(DisplayText.category(currentCategory)) + "<br>One ticket / one seat</html>");
+                + currentEvent.getStartsAt().format(displayDate) + "<br>Seat " + currentSeat.getLabel()
+                + " · " + Theme.html(DisplayText.category(currentCategory)) + "<br>One ticket / one seat</html>");
         // Displays this text in the named Swing component.
         checkoutView.total.setText(Theme.money(currentEvent.calculatePrice(currentSeat, currentCategory)));
         // Connects this control to the named event-handler command.
@@ -1068,13 +1082,11 @@ public class OpenEventUI extends JFrame implements ActionListener {
         if (method == 1) {
             // Updates this working value before the next step.
             payment = new CreditCardPayment();
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if (method == 2) {
             // Updates this working value before the next step.
             payment = new CashPayment();
-        }
-        // Handles the remaining case after the earlier condition was false.
+        } // Handles the remaining case after the earlier condition was false.
         else {
             // Updates this working value before the next step.
             payment = new EWalletPayment();
@@ -1087,12 +1099,14 @@ public class OpenEventUI extends JFrame implements ActionListener {
         beginTask(new ScreenTask() {
             // Stores saved ticket.
             private Ticket savedTicket;
+
             @Override
             // Runs database work in the background; it must not modify Swing controls.
             protected void performTask() throws Exception {
                 // Updates this working value before the next step.
                 savedTicket = controller.purchase(session, request);
             }
+
             @Override
             // Updates the screen after background work completes successfully.
             protected void showResult() {
@@ -1115,12 +1129,14 @@ public class OpenEventUI extends JFrame implements ActionListener {
         beginTask(new ScreenTask() {
             // Stores tickets.
             private List<Ticket> tickets;
+
             @Override
             // Runs database work in the background; it must not modify Swing controls.
             protected void performTask() throws Exception {
                 // Updates this working value before the next step.
                 tickets = repository.tickets(session, 0);
             }
+
             @Override
             // Updates the screen after background work completes successfully.
             protected void showResult() {
@@ -1146,12 +1162,13 @@ public class OpenEventUI extends JFrame implements ActionListener {
         // Lists use the same friendly states as the detailed ticket panel.
         ticketList.setCellRenderer(new javax.swing.DefaultListCellRenderer() {
             @Override
-            public Component getListCellRendererComponent(JList<?> list,Object value,int index,boolean selected,boolean focused) {
-                JLabel label=(JLabel)super.getListCellRendererComponent(list,value,index,selected,focused);
-                if(value instanceof Ticket) {
-                    Ticket ticket=(Ticket)value;
-                    String summary=ticket.getCode()+" · "+ticket.getEventTitle()+" · "+ticket.getSeatLabel()+" · "+DisplayText.ticketStatus(ticket.getStatus());
-                    label.setText(summary);label.setToolTipText(summary);
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focused) {
+                JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, selected, focused);
+                if (value instanceof Ticket) {
+                    Ticket ticket = (Ticket) value;
+                    String summary = ticket.getCode() + " · " + ticket.getEventTitle() + " · " + ticket.getSeatLabel() + " · " + DisplayText.ticketStatus(ticket.getStatus());
+                    label.setText(summary);
+                    label.setToolTipText(summary);
                 }
                 return label;
             }
@@ -1213,14 +1230,15 @@ public class OpenEventUI extends JFrame implements ActionListener {
 
     // Shows the selected ticket and enables refund only when it can be requested.
     private void updateTicketBanner(Ticket ticket) {
-        if("CANCELLED".equals(ticket.getStatus())) {
+        if ("CANCELLED".equals(ticket.getStatus())) {
             ticketsView.bannerText.setText("REFUND SAVED · This ticket is cancelled. The simulated refund is recorded.");
-        }
-        else if("USED".equals(ticket.getStatus())) {
+        } else if ("USED".equals(ticket.getStatus())) {
             ticketsView.bannerText.setText("CHECKED IN · This ticket has already been used for entry.");
+        } else {
+            ticketsView.bannerText.setText("TICKET SAVED · Keep this ticket code for entry.");
         }
-        else { ticketsView.bannerText.setText("TICKET SAVED · Keep this ticket code for entry."); }
     }
+
     private void showSelectedTicket() {
         // Prepares the local ticket value used in the following steps.
         Ticket ticket = ticketList.getSelectedValue();
@@ -1241,8 +1259,10 @@ public class OpenEventUI extends JFrame implements ActionListener {
             ticketsView.ticketTitle.setText("No tickets yet");
             // Displays this text in the named Swing component.
             ticketsView.ticketMeta.setText("Book an event to see your ticket here.");
-            ticketsView.ticketCode.setText("No ticket selected");ticketsView.ticketState.setText("");
-            ticketsView.receiptDetails.setText("");ticketsView.bannerText.setText("Your saved tickets will appear here after a successful booking.");
+            ticketsView.ticketCode.setText("No ticket selected");
+            ticketsView.ticketState.setText("");
+            ticketsView.receiptDetails.setText("");
+            ticketsView.bannerText.setText("Your saved tickets will appear here after a successful booking.");
             // Leaves this method now because there is no further work for this request.
             return;
         }
@@ -1252,16 +1272,16 @@ public class OpenEventUI extends JFrame implements ActionListener {
         ticketsView.ticketTitle.setToolTipText(ticket.getEventTitle());
         // Displays this text in the named Swing component.
         ticketsView.ticketMeta.setText("<html>" + ticket.getStartsAt().format(displayDate) + "<br>"
-        + Theme.html(ticket.getVenue()) + "<br>Seat " + ticket.getSeatLabel() + " · "
-        + Theme.html(DisplayText.category(ticket.getCategory())) + " · " + Theme.html(ticket.getCustomerName()) + "</html>");
+                + Theme.html(ticket.getVenue()) + "<br>Seat " + ticket.getSeatLabel() + " · "
+                + Theme.html(DisplayText.category(ticket.getCategory())) + " · " + Theme.html(ticket.getCustomerName()) + "</html>");
         // Displays this text in the named Swing component.
         ticketsView.ticketCode.setText(ticket.getCode());
         // Displays this text in the named Swing component.
         ticketsView.ticketState.setText("Ticket: " + DisplayText.ticketStatus(ticket.getStatus()) + " · " + DisplayText.paymentStatus(ticket.getPaymentStatus()));
         // Displays this text in the named Swing component.
         ticketsView.receiptDetails.setText("<html><b>" + Theme.money(ticket.getAmount()) + "</b> · "
-        + DisplayText.method(ticket.getMethod()) + "<br>" + ticket.getReceiptNumber() + "<br>"
-        + ticket.getReference() + "<br>No real money collected.</html>");
+                + DisplayText.method(ticket.getMethod()) + "<br>" + ticket.getReceiptNumber() + "<br>"
+                + ticket.getReference() + "<br>No real money collected.</html>");
     }
 
     // Asks for confirmation before requesting an eligible simulated refund.
@@ -1273,7 +1293,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
         }
         // Prepares the local choice value used in the following steps.
         int choice = JOptionPane.showConfirmDialog(this, "Cancel " + ticket.getCode()
-        + " and simulate a full refund?", "Cancel ticket", JOptionPane.YES_NO_OPTION);
+                + " and simulate a full refund?", "Cancel ticket", JOptionPane.YES_NO_OPTION);
         // Continues into this block only when the condition below is true.
         if (choice == JOptionPane.YES_OPTION) {
             // Creates a background task; its fields hold results until showResult updates the interface.
@@ -1284,6 +1304,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                     // Calls this operation to carry out the named step with the supplied arguments.
                     controller.cancel(session, ticket.getId());
                 }
+
                 @Override
                 // Updates the screen after background work completes successfully.
                 protected void showResult() {
@@ -1291,8 +1312,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                     if (session.isHost()) {
                         // Calls this operation to carry out the named step with the supplied arguments.
                         showHostDashboard(ticket.getEventId());
-                    }
-                    // Handles the remaining case after the earlier condition was false.
+                    } // Handles the remaining case after the earlier condition was false.
                     else {
                         // Calls this operation to carry out the named step with the supplied arguments.
                         showTickets(ticket.getCode());
@@ -1337,8 +1357,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                 Files.writeString(file, receipt.asText());
                 // Calls this operation to carry out the named step with the supplied arguments.
                 info("Receipt saved.");
-            }
-            // Handles this error without reporting the failed operation as a success.
+            } // Handles this error without reporting the failed operation as a success.
             catch (IOException exception) {
                 // Calls this operation to carry out the named step with the supplied arguments.
                 failure(exception);
@@ -1365,12 +1384,14 @@ public class OpenEventUI extends JFrame implements ActionListener {
         beginTask(new ScreenTask() {
             // Stores events.
             private List<Event> events;
+
             @Override
             // Runs database work in the background; it must not modify Swing controls.
             protected void performTask() throws Exception {
                 // Updates this working value before the next step.
                 events = repository.events(session, "");
             }
+
             @Override
             // Updates the screen after background work completes successfully.
             protected void showResult() {
@@ -1407,7 +1428,11 @@ public class OpenEventUI extends JFrame implements ActionListener {
         hostTable = new JTable();
         hostTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void valueChanged(ListSelectionEvent event) { if(!event.getValueIsAdjusting()) { updateHostRefundButton(); } }
+            public void valueChanged(ListSelectionEvent event) {
+                if (!event.getValueIsAdjusting()) {
+                    updateHostRefundButton();
+                }
+            }
         });
         // Calls this operation to carry out the named step with the supplied arguments.
         hostTable.setRowHeight(32);
@@ -1464,6 +1489,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
             private List<Ticket> tickets;
             // Stores layout.
             private VenueLayout layout;
+
             @Override
             // Runs database work in the background; it must not modify Swing controls.
             protected void performTask() throws Exception {
@@ -1472,6 +1498,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                 // Updates this working value before the next step.
                 layout = repository.layout(event.getId());
             }
+
             @Override
             // Updates the screen after background work completes successfully.
             protected void showResult() {
@@ -1528,7 +1555,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
         hostView.checkins.setText(Integer.toString(usedCount));
         // Prepares the local model value used in the following steps.
         DefaultTableModel model = new DefaultTableModel(
-        new String[]{"Ticket code", "Guest", "Seat", "Category", "Ticket status", "Payment"}, 0) {
+                new String[]{"Ticket code", "Guest", "Seat", "Category", "Ticket status", "Payment"}, 0) {
             @Override
             // Performs the is cell editable operation; exceptions are passed to the caller when needed.
             public boolean isCellEditable(int row, int column) {
@@ -1560,12 +1587,14 @@ public class OpenEventUI extends JFrame implements ActionListener {
             beginTask(new ScreenTask() {
                 // Stores guest name.
                 private String guestName;
+
                 @Override
                 // Runs database work in the background; it must not modify Swing controls.
                 protected void performTask() throws Exception {
                     // Updates this working value before the next step.
                     guestName = controller.checkIn(session, event.getId(), code);
                 }
+
                 @Override
                 // Updates the screen after background work completes successfully.
                 protected void showResult() {
@@ -1580,20 +1609,21 @@ public class OpenEventUI extends JFrame implements ActionListener {
 
     // Finds the selected table ticket and passes it to the common refund handler.
     private void updateHostRefundButton() {
-        boolean allowed=false;
-        if(hostView!=null && hostTable!=null) {
-            int row=hostTable.getSelectedRow();
-            if(row>=0) {
-                int index=hostTable.convertRowIndexToModel(row);
-                if(index>=0 && index<hostTickets.size()) {
-                    Ticket ticket=hostTickets.get(index);
-                    allowed="VALID".equals(ticket.getStatus()) && LocalDateTime.now().isBefore(ticket.getStartsAt());
+        boolean allowed = false;
+        if (hostView != null && hostTable != null) {
+            int row = hostTable.getSelectedRow();
+            if (row >= 0) {
+                int index = hostTable.convertRowIndexToModel(row);
+                if (index >= 0 && index < hostTickets.size()) {
+                    Ticket ticket = hostTickets.get(index);
+                    allowed = "VALID".equals(ticket.getStatus()) && LocalDateTime.now().isBefore(ticket.getStartsAt());
                 }
             }
             hostView.cancel.setEnabled(allowed);
             hostView.cancel.setToolTipText("Select an unused ticket before its event starts to request a simulated refund.");
         }
     }
+
     private void cancelHostSelection() {
         // Prepares the local row value used in the following steps.
         int row = hostTable.getSelectedRow();
@@ -1601,8 +1631,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
         if (row < 0) {
             // Calls this operation to carry out the named step with the supplied arguments.
             info("Select a ticket in the table first.");
-        }
-        // Handles the remaining case after the earlier condition was false.
+        } // Handles the remaining case after the earlier condition was false.
         else {
             // Prepares the local model row value used in the following steps.
             int modelRow = hostTable.convertRowIndexToModel(row);
@@ -1626,6 +1655,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
             private VenueLayout layout;
             // Stores active tickets.
             private long activeTickets;
+
             @Override
             // Runs database work in the background; it must not modify Swing controls.
             protected void performTask() throws Exception {
@@ -1634,6 +1664,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                 // Updates this working value before the next step.
                 activeTickets = repository.activeTickets(event.getId());
             }
+
             @Override
             // Updates the screen after background work completes successfully.
             protected void showResult() {
@@ -1654,9 +1685,9 @@ public class OpenEventUI extends JFrame implements ActionListener {
     // Fills the event editor and restores its saved stage, colors and seats.
     private void showEditor(Event event, VenueLayout layout, boolean protectSeats) {
         // Updates this working value before the next step.
-        venueDesigner=null;
-        simpleGridEditor=null;
-        venueLayoutEditor=null;
+        venueDesigner = null;
+        simpleGridEditor = null;
+        venueLayoutEditor = null;
         editingEvent = event;
         // Updates this working value before the next step.
         savedLayout = layout;
@@ -1672,14 +1703,19 @@ public class OpenEventUI extends JFrame implements ActionListener {
         regularColor = "#2AA89B";
         // Updates this working value before the next step.
         editorView = new EventEditorView();
-        if(event==null) { editorView.heading.setText("Create event"); }
-        else { editorView.heading.setText("Edit event and venue"); }
+        if (event == null) {
+            editorView.heading.setText("Create event");
+        } else {
+            editorView.heading.setText("Edit event and venue");
+        }
         editorView.startsAt.setToolTipText("Use year-month-day and 24-hour time. Example: 2026-12-15 19:00.");
         editorView.earlyBird.setToolTipText("Discounts stop at this date/time. It must be before the event starts.");
         editorView.basePrice.setToolTipText("Starting price for a new grid. Once customized, edit actual prices under Ticket types.");
         editorView.published.setToolTipText("Leave unchecked to save a private draft; check to allow Customer bookings.");
-        editorView.nameLabel.setLabelFor(editorView.eventName);editorView.venueLabel.setLabelFor(editorView.venue);
-        editorView.startsLabel.setLabelFor(editorView.startsAt);editorView.earlyLabel.setLabelFor(editorView.earlyBird);
+        editorView.nameLabel.setLabelFor(editorView.eventName);
+        editorView.venueLabel.setLabelFor(editorView.venue);
+        editorView.startsLabel.setLabelFor(editorView.startsAt);
+        editorView.earlyLabel.setLabelFor(editorView.earlyBird);
         // Continues into this block only when the condition below is true.
         if (event == null) {
             // Displays this text in the named Swing component.
@@ -1688,8 +1724,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
             editorView.startsAt.setText(LocalDate.now().plusDays(30).atTime(19, 0).format(inputDate));
             // Displays this text in the named Swing component.
             editorView.earlyBird.setText(LocalDate.now().plusDays(20).atTime(23, 59).format(inputDate));
-        }
-        // Handles the remaining case after the earlier condition was false.
+        } // Handles the remaining case after the earlier condition was false.
         else {
             // Displays this text in the named Swing component.
             editorView.eventName.setText(event.getTitle());
@@ -1730,8 +1765,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                 if ("VIP".equals(seat.getCategory())) {
                     // Updates this working value before the next step.
                     vipColor = seat.getColor();
-                }
-                // Handles the remaining case after the earlier condition was false.
+                } // Handles the remaining case after the earlier condition was false.
                 else {
                     // Updates this working value before the next step.
                     regularColor = seat.getColor();
@@ -1765,32 +1799,36 @@ public class OpenEventUI extends JFrame implements ActionListener {
         // Calls this operation to carry out the named step with the supplied arguments.
 
         // Return to the original click-to-edit grid without changing saved venue geometry.
-        if(layout==null || layout.isFlexible()) {
-            venueLayoutEditor=new VenueLayoutEditor(layout,protectedLayout,new BigDecimal(editorView.basePrice.getText().trim()));
+        if (layout == null || layout.isFlexible()) {
+            venueLayoutEditor = new VenueLayoutEditor(layout, protectedLayout, new BigDecimal(editorView.basePrice.getText().trim()));
             venueLayoutEditor.setStartingPriceField(editorView.basePrice);
-        }
-        else {
-            simpleGridEditor = new SimpleGridEditor(layout, protectedLayout,new BigDecimal(editorView.basePrice.getText().trim()));
+        } else {
+            simpleGridEditor = new SimpleGridEditor(layout, protectedLayout, new BigDecimal(editorView.basePrice.getText().trim()));
             simpleGridEditor.setStartingPriceField(editorView.basePrice);
         }
         // Hide the old duplicate controls; the compact grid contains only its own essentials.
-        for (JComponent control : new JComponent[]{editorView.rows,editorView.rowsLabel,
-                editorView.columns,editorView.columnsLabel,editorView.stageRow,editorView.stageRowLabel,
-                editorView.stageCol,editorView.stageColLabel,editorView.stageWidth,editorView.stageWidthLabel,
-                editorView.rebuild,editorView.vipColor,editorView.regularColor,editorView.gridHelp,editorView.pricingRule}) {
+        for (JComponent control : new JComponent[]{editorView.rows, editorView.rowsLabel,
+            editorView.columns, editorView.columnsLabel, editorView.stageRow, editorView.stageRowLabel,
+            editorView.stageCol, editorView.stageColLabel, editorView.stageWidth, editorView.stageWidthLabel,
+            editorView.rebuild, editorView.vipColor, editorView.regularColor, editorView.gridHelp, editorView.pricingRule}) {
             control.setVisible(false);
         }
         editorView.gridPanel.removeAll();
         editorView.gridPanel.setLayout(new BorderLayout());
-        editorView.gridPanel.setBounds(32,414,1110,510);
-        if(venueLayoutEditor!=null) { editorView.gridPanel.add(venueLayoutEditor,BorderLayout.CENTER); }
-        else { editorView.gridPanel.add(simpleGridEditor,BorderLayout.CENTER); }
-        editorView.published.setLocation(32,950);
-        editorView.save.setLocation(790,944);
-        editorView.setPreferredSize(new Dimension(1176,1020));
+        editorView.gridPanel.setBounds(32, 414, 1110, 510);
+        if (venueLayoutEditor != null) {
+            editorView.gridPanel.add(venueLayoutEditor, BorderLayout.CENTER);
+        } else {
+            editorView.gridPanel.add(simpleGridEditor, BorderLayout.CENTER);
+        }
+        editorView.published.setLocation(32, 950);
+        editorView.save.setLocation(790, 944);
+        editorView.setPreferredSize(new Dimension(1176, 1020));
         editorView.subtitle.setText("Add sections to the empty venue. Drag to arrange; click a section to edit its seats.");
         editorView.priceLabel.setText("Starting price (PHP)");
-        if(!protectedLayout) { layoutChanged=true; }
+        if (!protectedLayout) {
+            layoutChanged = true;
+        }
         screen(editorView);
     }
 
@@ -1852,8 +1890,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                     stage.setForeground(Color.WHITE);
                     // Adds this object to the collection or this child component to its parent container.
                     grid.add(stage);
-                }
-                // Handles the remaining case after the earlier condition was false.
+                } // Handles the remaining case after the earlier condition was false.
                 else {
                     // Prepares the local key value used in the following steps.
                     String key = row + ":" + column;
@@ -1869,8 +1906,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                         seatButton.setBackground(Theme.BG);
                         // Shows this explanation when the pointer rests over the component.
                         seatButton.setToolTipText("AISLE");
-                    }
-                    // Handles the remaining case after the earlier condition was false.
+                    } // Handles the remaining case after the earlier condition was false.
                     else {
                         // Prepares the local seat label value used in the following steps.
                         String seatLabel = "" + (char) ('A' + row) + (column + 1);
@@ -1922,10 +1958,10 @@ public class OpenEventUI extends JFrame implements ActionListener {
         // Attempts the following operation and lets the catch block handle a failure.
         try {
             new VenueLayout(number(editorView.rows), number(editorView.columns),
-            // Calls this operation to carry out the named step with the supplied arguments.
-            number(editorView.stageRow) - 1, number(editorView.stageCol) - 1,
-            // Calls this operation to carry out the named step with the supplied arguments.
-            number(editorView.stageWidth), new ArrayList<Seat>());
+                    // Calls this operation to carry out the named step with the supplied arguments.
+                    number(editorView.stageRow) - 1, number(editorView.stageCol) - 1,
+                    // Calls this operation to carry out the named step with the supplied arguments.
+                    number(editorView.stageWidth), new ArrayList<Seat>());
             // Clears the draft collection before building its replacement values.
             editorSeats.clear();
             // Repeats this block with an index so each relevant position or parameter is processed.
@@ -1950,8 +1986,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
             layoutChanged = true;
             // Calls this operation to carry out the named step with the supplied arguments.
             renderEditorGrid();
-        }
-        // Handles this error without reporting the failed operation as a success.
+        } // Handles this error without reporting the failed operation as a success.
         catch (RuntimeException exception) {
             // Calls this operation to carry out the named step with the supplied arguments.
             failure(exception);
@@ -1971,13 +2006,11 @@ public class OpenEventUI extends JFrame implements ActionListener {
         if (category == null) {
             // Stores this value under its key so it can be found again later.
             editorSeats.put(key, "REGULAR");
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("REGULAR".equals(category)) {
             // Stores this value under its key so it can be found again later.
             editorSeats.put(key, "VIP");
-        }
-        // Handles the remaining case after the earlier condition was false.
+        } // Handles the remaining case after the earlier condition was false.
         else {
             // Removes this draft entry; for a grid cell, a missing entry represents an aisle.
             editorSeats.remove(key);
@@ -2016,8 +2049,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
             if (vip) {
                 // Updates this working value before the next step.
                 vipColor = hexColor;
-            }
-            // Handles the remaining case after the earlier condition was false.
+            } // Handles the remaining case after the earlier condition was false.
             else {
                 // Updates this working value before the next step.
                 regularColor = hexColor;
@@ -2064,11 +2096,17 @@ public class OpenEventUI extends JFrame implements ActionListener {
             }
             // Prepares the local layout value used in the following steps.
             final VenueLayout layout;
-            if(venueLayoutEditor!=null) { layout=venueLayoutEditor.getVenueLayout(); }
-            else if(simpleGridEditor!=null) { layout=simpleGridEditor.getVenueLayout(); }
-            else if(venueDesigner!=null) { layout=new VenueLayout(venueDesigner.getPlan()); }
-            else if(savedLayout!=null && (protectedLayout || hasCustomTypes(savedLayout))) { layout=savedLayout; }
-            else { layout=new VenueLayout(rows,columns,stageRow,stageColumn,stageWidth,seats); }
+            if (venueLayoutEditor != null) {
+                layout = venueLayoutEditor.getVenueLayout();
+            } else if (simpleGridEditor != null) {
+                layout = simpleGridEditor.getVenueLayout();
+            } else if (venueDesigner != null) {
+                layout = new VenueLayout(venueDesigner.getPlan());
+            } else if (savedLayout != null && (protectedLayout || hasCustomTypes(savedLayout))) {
+                layout = savedLayout;
+            } else {
+                layout = new VenueLayout(rows, columns, stageRow, stageColumn, stageWidth, seats);
+            }
             // Prepares the local start value used in the following steps.
             LocalDateTime start = LocalDateTime.parse(editorView.startsAt.getText().trim(), inputDate);
             // Prepares the local early value used in the following steps.
@@ -2112,13 +2150,11 @@ public class OpenEventUI extends JFrame implements ActionListener {
             if ("SPORTS".equals(type)) {
                 // Updates this working value before the next step.
                 event = new SportsMatch(id, owner, name, venue, description, image, start, early, price, publish);
-            }
-            // Checks the next possible case when the earlier condition was false.
+            } // Checks the next possible case when the earlier condition was false.
             else if ("MOVIE".equals(type)) {
                 // Updates this working value before the next step.
                 event = new MovieScreening(id, owner, name, venue, description, image, start, early, price, publish);
-            }
-            // Handles the remaining case after the earlier condition was false.
+            } // Handles the remaining case after the earlier condition was false.
             else {
                 // Updates this working value before the next step.
                 event = new Concert(id, owner, name, venue, description, image, start, early, price, publish);
@@ -2127,25 +2163,30 @@ public class OpenEventUI extends JFrame implements ActionListener {
             boolean changed = layoutChanged || savedLayout == null;
             // Continues into this block only when the condition below is true.
             if (savedLayout != null && (rows != savedLayout.getRows() || columns != savedLayout.getColumns()
-            || stageRow != savedLayout.getStageRow() || stageColumn != savedLayout.getStageColumn()
-            || stageWidth != savedLayout.getStageWidth())) {
+                    || stageRow != savedLayout.getStageRow() || stageColumn != savedLayout.getStageColumn()
+                    || stageWidth != savedLayout.getStageWidth())) {
                 // Updates this working value before the next step.
                 changed = true;
             }
             // Prepares the local replace layout value used in the following steps.
-            if(venueLayoutEditor!=null || simpleGridEditor!=null || venueDesigner!=null) { changed=!protectedLayout; }
-            else if(savedLayout!=null && hasCustomTypes(savedLayout)) { changed=false; }
+            if (venueLayoutEditor != null || simpleGridEditor != null || venueDesigner != null) {
+                changed = !protectedLayout;
+            } else if (savedLayout != null && hasCustomTypes(savedLayout)) {
+                changed = false;
+            }
             final boolean replaceLayout = changed;
             // Creates a background task; its fields hold results until showResult updates the interface.
             beginTask(new ScreenTask() {
                 // Stores saved event id.
                 private long savedEventId;
+
                 @Override
                 // Runs database work in the background; it must not modify Swing controls.
                 protected void performTask() throws Exception {
                     // Updates this working value before the next step.
                     savedEventId = repository.saveEvent(session, event, layout, replaceLayout);
                 }
+
                 @Override
                 // Updates the screen after background work completes successfully.
                 protected void showResult() {
@@ -2153,8 +2194,7 @@ public class OpenEventUI extends JFrame implements ActionListener {
                     if (publish) {
                         // Calls this operation to carry out the named step with the supplied arguments.
                         info("Event and venue saved and published.");
-                    }
-                    // Handles the remaining case after the earlier condition was false.
+                    } // Handles the remaining case after the earlier condition was false.
                     else {
                         // Calls this operation to carry out the named step with the supplied arguments.
                         info("Event and venue saved as a draft.");
@@ -2163,18 +2203,15 @@ public class OpenEventUI extends JFrame implements ActionListener {
                     showHostDashboard(savedEventId);
                 }
             });
-        }
-        // Handles this error without reporting the failed operation as a success.
+        } // Handles this error without reporting the failed operation as a success.
         catch (DateTimeParseException exception) {
             // Calls this operation to carry out the named step with the supplied arguments.
             info("Use a valid date and time in yyyy-MM-dd HH:mm format.");
-        }
-        // Handles this error without reporting the failed operation as a success.
+        } // Handles this error without reporting the failed operation as a success.
         catch (NumberFormatException exception) {
             // Calls this operation to carry out the named step with the supplied arguments.
             info("Enter a price such as 500.00. Custom ticket prices are set in Ticket types.");
-        }
-        // Handles this error without reporting the failed operation as a success.
+        } // Handles this error without reporting the failed operation as a success.
         catch (RuntimeException exception) {
             // Calls this operation to carry out the named step with the supplied arguments.
             failure(exception);
@@ -2232,53 +2269,85 @@ public class OpenEventUI extends JFrame implements ActionListener {
 
     // Reuse the form's existing container; all generated .form metadata stays intact.
     private void installFlexibleEditor(VenuePlan plan) {
-        venueDesigner=new VenueDesigner(plan,protectedLayout,new BigDecimal(editorView.basePrice.getText().trim()));
+        venueDesigner = new VenueDesigner(plan, protectedLayout, new BigDecimal(editorView.basePrice.getText().trim()));
         venueDesigner.setTemplatePriceField(editorView.basePrice);
-        for(JComponent control:new JComponent[]{editorView.rows,editorView.rowsLabel,editorView.columns,editorView.columnsLabel,
-                editorView.stageRow,editorView.stageRowLabel,editorView.stageCol,editorView.stageColLabel,
-                editorView.stageWidth,editorView.stageWidthLabel,editorView.rebuild,editorView.vipColor,
-                editorView.regularColor,editorView.gridHelp,editorView.pricingRule}) { control.setVisible(false); }
-        // Remove legacy-only runtime buttons if the user upgrades an old unbooked grid.
-        for(java.awt.Component component:editorView.getComponents()) {
-            if(component instanceof JButton && component.getY()==497) { component.setVisible(false); }
+        for (JComponent control : new JComponent[]{editorView.rows, editorView.rowsLabel, editorView.columns, editorView.columnsLabel,
+            editorView.stageRow, editorView.stageRowLabel, editorView.stageCol, editorView.stageColLabel,
+            editorView.stageWidth, editorView.stageWidthLabel, editorView.rebuild, editorView.vipColor,
+            editorView.regularColor, editorView.gridHelp, editorView.pricingRule}) {
+            control.setVisible(false);
         }
-        editorView.gridPanel.removeAll();editorView.gridPanel.setLayout(new BorderLayout());
-        editorView.gridPanel.setBounds(32,414,1110,660);editorView.gridPanel.add(venueDesigner,BorderLayout.CENTER);
-        editorView.published.setLocation(32,1100);editorView.save.setLocation(790,1094);
-        editorView.setPreferredSize(new Dimension(1176,1170));
+        // Remove legacy-only runtime buttons if the user upgrades an old unbooked grid.
+        for (java.awt.Component component : editorView.getComponents()) {
+            if (component instanceof JButton && component.getY() == 497) {
+                component.setVisible(false);
+            }
+        }
+        editorView.gridPanel.removeAll();
+        editorView.gridPanel.setLayout(new BorderLayout());
+        editorView.gridPanel.setBounds(32, 414, 1110, 660);
+        editorView.gridPanel.add(venueDesigner, BorderLayout.CENTER);
+        editorView.published.setLocation(32, 1100);
+        editorView.save.setLocation(790, 1094);
+        editorView.setPreferredSize(new Dimension(1176, 1170));
         editorView.subtitle.setText("Arrange physical sections and assign custom ticket offers. Prices are set in Ticket types.");
         editorView.priceLabel.setText("Template starting price (PHP)");
-        layoutChanged=true;editorView.revalidate();editorView.repaint();
+        layoutChanged = true;
+        editorView.revalidate();
+        editorView.repaint();
     }
+
     private boolean hasCustomTypes(VenueLayout layout) {
-        for(Seat seat:layout.getSeats()) { if(seat.getTicketType()!=null) { return true; } }
+        for (Seat seat : layout.getSeats()) {
+            if (seat.getTicketType() != null) {
+                return true;
+            }
+        }
         return false;
     }
+
     private void manageLegacyTypes() {
-        final long eventId=editingEvent.getId();
+        final long eventId = editingEvent.getId();
         beginTask(new ScreenTask() {
             private List<TicketType> types;
+
             @Override
-            protected void performTask() throws Exception { types=repository.ticketTypes(session,eventId); }
+            protected void performTask() throws Exception {
+                types = repository.ticketTypes(session, eventId);
+            }
+
             @Override
             protected void showResult() {
-                java.util.Set<String> assigned=new java.util.HashSet<String>();
-                for(Seat seat:savedLayout.getSeats()) { assigned.add(seat.getTypeCode()); }
-                TicketTypePanel panel=new TicketTypePanel(types,assigned);
-                panel.setPreferredSize(new Dimension(650,440));
-                while(JOptionPane.showConfirmDialog(OpenEventUI.this,panel,"Event ticket types",JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE)==JOptionPane.OK_OPTION) {
-                    try { saveLegacyTypes(eventId,panel.getTypes());return; }
-                    catch(RuntimeException exception) { failure(exception); }
+                java.util.Set<String> assigned = new java.util.HashSet<String>();
+                for (Seat seat : savedLayout.getSeats()) {
+                    assigned.add(seat.getTypeCode());
+                }
+                TicketTypePanel panel = new TicketTypePanel(types, assigned);
+                panel.setPreferredSize(new Dimension(650, 440));
+                while (JOptionPane.showConfirmDialog(OpenEventUI.this, panel, "Event ticket types", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION) {
+                    try {
+                        saveLegacyTypes(eventId, panel.getTypes());
+                        return;
+                    } catch (RuntimeException exception) {
+                        failure(exception);
+                    }
                 }
             }
         });
     }
-    private void saveLegacyTypes(final long eventId,final List<TicketType> types) {
+
+    private void saveLegacyTypes(final long eventId, final List<TicketType> types) {
         beginTask(new ScreenTask() {
             @Override
-            protected void performTask() throws Exception { repository.updateTicketTypes(session,eventId,types); }
+            protected void performTask() throws Exception {
+                repository.updateTicketTypes(session, eventId, types);
+            }
+
             @Override
-            protected void showResult() { info("Ticket types saved. Existing purchased tickets keep their original names and amounts.");showHostDashboard(eventId); }
+            protected void showResult() {
+                info("Ticket types saved. Existing purchased tickets keep their original names and amounts.");
+                showHostDashboard(eventId);
+            }
         });
     }
 }

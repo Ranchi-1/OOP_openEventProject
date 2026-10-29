@@ -1,10 +1,8 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.model;
 
 // Defines the Receipt class and keeps its related data and operations together.
 public class Receipt {
+
     // Stores ticket.
     private final Ticket ticket;
 

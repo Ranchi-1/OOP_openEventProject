@@ -1,8 +1,6 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.model;
 // Imports ArrayList so this class can use that type by its short name.
+
 import java.util.ArrayList;
 // Imports HashSet so this class can use that type by its short name.
 import java.util.HashSet;
@@ -10,9 +8,13 @@ import java.util.HashSet;
 import java.util.List;
 // Imports Set so this class can use that type by its short name.
 import java.util.Set;
-/** A venue owns its grid dimensions, stage coordinates and a list of seats. */
+
+/**
+ * A venue owns its grid dimensions, stage coordinates and a list of seats.
+ */
 // Defines the VenueLayout class and keeps its related data and operations together.
 public class VenueLayout {
+
     // Stores rows.
     private final int rows;
     // Stores columns.
@@ -33,7 +35,9 @@ public class VenueLayout {
     public VenueLayout(int rows, int columns, int stageRow, int stageColumn,
             int stageWidth, List<Seat> seats, List<TicketType> types) {
         this(rows, columns, stageRow, stageColumn, stageWidth, seats);
-        if (types.size() > 20) { throw new IllegalArgumentException("Use at most 20 ticket types."); }
+        if (types.size() > 20) {
+            throw new IllegalArgumentException("Use at most 20 ticket types.");
+        }
         Set<String> codes = new HashSet<String>();
         Set<String> names = new HashSet<String>();
         for (TicketType type : types) {
@@ -43,7 +47,9 @@ public class VenueLayout {
         }
         if (!types.isEmpty()) {
             for (Seat seat : seats) {
-                if (!codes.contains(seat.getTypeCode())) { throw new IllegalArgumentException("Choose a ticket type for every seat."); }
+                if (!codes.contains(seat.getTypeCode())) {
+                    throw new IllegalArgumentException("Choose a ticket type for every seat.");
+                }
             }
         }
         ticketTypes = new ArrayList<TicketType>(types);
@@ -51,33 +57,52 @@ public class VenueLayout {
 
     // Return a copy to protect the offers belonging to this saved layout.
     public List<TicketType> getTicketTypes() {
-        if (plan != null) { return plan.getTicketTypes(); }
+        if (plan != null) {
+            return plan.getTicketTypes();
+        }
         return new ArrayList<TicketType>(ticketTypes);
     }
-    public VenueLayout(VenuePlan plan,List<Seat> savedSeats) {
-        this.rows=14; this.columns=18;
-        this.stageRow=0; this.stageColumn=0; this.stageWidth=1;
-        this.plan=plan;
+
+    public VenueLayout(VenuePlan plan, List<Seat> savedSeats) {
+        this.rows = 14;
+        this.columns = 18;
+        this.stageRow = 0;
+        this.stageColumn = 0;
+        this.stageWidth = 1;
+        this.plan = plan;
         // Saved seat identities may differ, but their positions must match the validated plan.
-        java.util.Map<String,Seat> expected=new java.util.HashMap<String,Seat>();
-        for(Seat seat:plan.createSeats()) { expected.put(seat.getRow()+":"+seat.getColumn(),seat); }
-        if(expected.size()!=savedSeats.size()) { throw new IllegalArgumentException("Saved seats do not match the venue plan."); }
-        for(Seat seat:savedSeats) {
-            Seat planned=expected.remove(seat.getRow()+":"+seat.getColumn());
-            if(planned==null || !planned.getLabel().equals(seat.getLabel()) || !planned.getTypeCode().equals(seat.getTypeCode())
+        java.util.Map<String, Seat> expected = new java.util.HashMap<String, Seat>();
+        for (Seat seat : plan.createSeats()) {
+            expected.put(seat.getRow() + ":" + seat.getColumn(), seat);
+        }
+        if (expected.size() != savedSeats.size()) {
+            throw new IllegalArgumentException("Saved seats do not match the venue plan.");
+        }
+        for (Seat seat : savedSeats) {
+            Seat planned = expected.remove(seat.getRow() + ":" + seat.getColumn());
+            if (planned == null || !planned.getLabel().equals(seat.getLabel()) || !planned.getTypeCode().equals(seat.getTypeCode())
                     || !planned.getAreaCode().equals(seat.getAreaCode())) {
                 throw new IllegalArgumentException("Saved seats must match their physical section and ticket type.");
             }
         }
-        this.seats=new ArrayList<Seat>(savedSeats);
+        this.seats = new ArrayList<Seat>(savedSeats);
     }
-    public VenueLayout(VenuePlan plan) { this(plan,plan.createSeats()); }
-    public boolean isFlexible() { return plan != null; }
-    public VenuePlan getPlan() { return plan; }
+
+    public VenueLayout(VenuePlan plan) {
+        this(plan, plan.createSeats());
+    }
+
+    public boolean isFlexible() {
+        return plan != null;
+    }
+
+    public VenuePlan getPlan() {
+        return plan;
+    }
 
     // Constructs a VenueLayout object and initializes or validates its starting state.
     public VenueLayout(int rows, int columns, int stageRow, int stageColumn,
-    int stageWidth, List<Seat> seats) {
+            int stageWidth, List<Seat> seats) {
         // Continues into this block only when the condition below is true.
         if (rows < 4 || rows > 14 || columns < 4 || columns > 18) {
             // Stops this operation with a clear error; the caller can display or test the failure.
@@ -85,7 +110,7 @@ public class VenueLayout {
         }
         // Continues into this block only when the condition below is true.
         if (stageRow < 0 || stageRow >= rows || stageColumn < 0
-        || stageWidth < 1 || stageColumn + stageWidth > columns) {
+                || stageWidth < 1 || stageColumn + stageWidth > columns) {
             // Stops this operation with a clear error; the caller can display or test the failure.
             throw new IllegalArgumentException("Keep the stage within the venue grid.");
         }
@@ -109,9 +134,9 @@ public class VenueLayout {
             String position = seat.getRow() + ":" + seat.getColumn();
             // Continues into this block only when the condition below is true.
             if (seat.getRow() < 0 || seat.getRow() >= rows
-            || seat.getColumn() < 0 || seat.getColumn() >= columns
-            || isStage(seat.getRow(), seat.getColumn())
-            || occupiedPositions.contains(position)) {
+                    || seat.getColumn() < 0 || seat.getColumn() >= columns
+                    || isStage(seat.getRow(), seat.getColumn())
+                    || occupiedPositions.contains(position)) {
                 // Stops this operation with a clear error; the caller can display or test the failure.
                 throw new IllegalArgumentException("Seats must be unique, in bounds and outside the stage.");
             }
@@ -125,26 +150,31 @@ public class VenueLayout {
         // Returns the stored rows value to the calling code.
         return rows;
     }
+
     // Returns columns through a getter, keeping the field itself private.
     public int getColumns() {
         // Returns the stored columns value to the calling code.
         return columns;
     }
+
     // Returns stage row through a getter, keeping the field itself private.
     public int getStageRow() {
         // Returns the stored stage row value to the calling code.
         return stageRow;
     }
+
     // Returns stage column through a getter, keeping the field itself private.
     public int getStageColumn() {
         // Returns the stored stage column value to the calling code.
         return stageColumn;
     }
+
     // Returns stage width through a getter, keeping the field itself private.
     public int getStageWidth() {
         // Returns the stored stage width value to the calling code.
         return stageWidth;
     }
+
     // Returns seats through a getter, keeping the field itself private.
     public List<Seat> getSeats() {
         // Returns a copy so calling code cannot modify the internal list directly.
@@ -155,7 +185,7 @@ public class VenueLayout {
     public boolean isStage(int row, int column) {
         // Returns this result to the method that called the current operation.
         return row == stageRow && column >= stageColumn
-        && column < stageColumn + stageWidth;
+                && column < stageColumn + stageWidth;
     }
 
     // Groups seats into Section objects using two ordinary loops.

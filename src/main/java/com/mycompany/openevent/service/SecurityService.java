@@ -1,6 +1,3 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.service;
 
 // Imports User so this class can use that type by its short name.
@@ -69,13 +66,11 @@ public final class SecurityService {
             byte[] passwordHash = factory.generateSecret(passwordSpec).getEncoded();
             // Returns this result to the method that called the current operation.
             return passwordHash;
-        }
-        // Handles this error without reporting the failed operation as a success.
+        } // Handles this error without reporting the failed operation as a success.
         catch (GeneralSecurityException exception) {
             // Stops this operation with a clear error; the caller can display or test the failure.
             throw new IllegalStateException(exception);
-        }
-        // Runs this cleanup whether the preceding operation succeeds or fails.
+        } // Runs this cleanup whether the preceding operation succeeds or fails.
         finally {
             // Clears the temporary password characters after use.
             passwordSpec.clearPassword();
@@ -96,8 +91,7 @@ public final class SecurityService {
             byte[] enteredHash = derive(password, salt);
             // Returns this result to the method that called the current operation.
             return MessageDigest.isEqual(enteredHash, savedHash);
-        }
-        // Handles this error without reporting the failed operation as a success.
+        } // Handles this error without reporting the failed operation as a success.
         catch (RuntimeException exception) {
             // Returns this result to the method that called the current operation.
             return false;
@@ -132,8 +126,7 @@ public final class SecurityService {
                 if (host) {
                     // Updates this working value before the next step.
                     user = new Host(resultSet.getLong("id"), resultSet.getString("name"), resultSet.getString("email"));
-                }
-                // Handles the remaining case after the earlier condition was false.
+                } // Handles the remaining case after the earlier condition was false.
                 else {
                     // Updates this working value before the next step.
                     user = new Customer(resultSet.getLong("id"), resultSet.getString("name"), resultSet.getString("email"));
@@ -141,8 +134,7 @@ public final class SecurityService {
                 // Returns this result to the method that called the current operation.
                 return new Session(user);
             }
-        }
-        // Runs this cleanup whether the preceding operation succeeds or fails.
+        } // Runs this cleanup whether the preceding operation succeeds or fails.
         finally {
             // Clears the temporary password characters after use.
             Arrays.fill(password, '\0');
@@ -177,19 +169,16 @@ public final class SecurityService {
                 throw new IllegalArgumentException("Enter a name, valid email and a password of at least 8 characters.");
             }
             // Bind the values and save only a salted hash, never the readable password.
-            try (Connection connection = Database.connect();
-                    PreparedStatement statement = connection.prepareStatement(
-                            "INSERT INTO " + table + "(name,email,password_hash) VALUES(?,?,?)")) {
+            try (Connection connection = Database.connect(); PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO " + table + "(name,email,password_hash) VALUES(?,?,?)")) {
                 statement.setString(1, cleanName);
                 statement.setString(2, cleanEmail);
                 statement.setString(3, hash(password));
                 statement.executeUpdate();
-            }
-            catch (SQLIntegrityConstraintViolationException exception) {
+            } catch (SQLIntegrityConstraintViolationException exception) {
                 throw new IllegalArgumentException("A " + role + " account already uses this email.");
             }
-        }
-        finally {
+        } finally {
             // Clear the caller's temporary password even when validation or saving fails.
             Arrays.fill(password, '\0');
         }

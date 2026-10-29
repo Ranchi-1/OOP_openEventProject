@@ -1,6 +1,4 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
+
 package com.mycompany.openevent;
 
 // Imports Host so this class can use that type by its short name.

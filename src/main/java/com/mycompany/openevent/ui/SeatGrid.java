@@ -1,8 +1,6 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.ui;
 // Imports Seat so this class can use that type by its short name.
+
 import com.mycompany.openevent.model.Seat;
 // Imports VenueLayout so this class can use that type by its short name.
 import com.mycompany.openevent.model.VenueLayout;
@@ -33,12 +31,18 @@ import java.util.HashMap;
 // Imports Map so this class can use that type by its short name.
 import java.util.Map;
 
-/** Displays saved seats; clicking a button only selects a seat, not a booking. */
+/**
+ * Displays saved seats; clicking a button only selects a seat, not a booking.
+ */
 // Defines a class that inherits the fields and behavior of its parent type.
 public class SeatGrid extends JPanel {
-    /** A normal interface tells the window which seat was clicked. */
+
+    /**
+     * A normal interface tells the window which seat was clicked.
+     */
     // Defines a normal callback contract that another class implements.
     public interface SeatSelectionListener {
+
         void seatSelected(Seat seat);
     }
 
@@ -50,20 +54,27 @@ public class SeatGrid extends JPanel {
     private Seat selected;
 
     // Constructs a SeatGrid object and initializes or validates its starting state.
-    public SeatGrid(java.util.List<Seat> seats,int rows,int columns,int rowOffset,SeatSelectionListener listener) {
-        super(new GridLayout(rows,columns,7,7));
-        this.listener=listener;
+    public SeatGrid(java.util.List<Seat> seats, int rows, int columns, int rowOffset, SeatSelectionListener listener) {
+        super(new GridLayout(rows, columns, 7, 7));
+        this.listener = listener;
         setBackground(Color.WHITE);
-        setBorder(BorderFactory.createEmptyBorder(12,12,12,12));
-        Map<String,Seat> positions=new HashMap<String,Seat>();
-        for(Seat seat:seats) { positions.put(seat.getRow()+":"+seat.getColumn(),seat); }
-        for(int r=0;r<rows;r++) {
-            for(int c=0;c<columns;c++) {
-                Seat seat=positions.get((rowOffset+r)+":"+c);
-                if(seat==null) { add(new JLabel()); } else { addSeatButton(seat); }
+        setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
+        Map<String, Seat> positions = new HashMap<String, Seat>();
+        for (Seat seat : seats) {
+            positions.put(seat.getRow() + ":" + seat.getColumn(), seat);
+        }
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < columns; c++) {
+                Seat seat = positions.get((rowOffset + r) + ":" + c);
+                if (seat == null) {
+                    add(new JLabel());
+                } else {
+                    addSeatButton(seat);
+                }
             }
         }
     }
+
     public SeatGrid(VenueLayout layout, SeatSelectionListener listener) {
         // Passes the shared initialization values to the parent constructor.
         super(new GridLayout(layout.getRows(), layout.getColumns(), 7, 7));
@@ -104,8 +115,7 @@ public class SeatGrid extends JPanel {
                     stage.setFont(new Font("Segoe UI", Font.BOLD, 10));
                     // Calls this operation to carry out the named step with the supplied arguments.
                     add(stage);
-                }
-                // Handles the remaining case after the earlier condition was false.
+                } // Handles the remaining case after the earlier condition was false.
                 else {
                     // Prepares the local seat value used in the following steps.
                     Seat seat = positions.get(row + ":" + column);
@@ -113,8 +123,7 @@ public class SeatGrid extends JPanel {
                     if (seat == null) {
                         // Calls this operation to carry out the named step with the supplied arguments.
                         add(new JLabel());
-                    }
-                    // Handles the remaining case after the earlier condition was false.
+                    } // Handles the remaining case after the earlier condition was false.
                     else {
                         // Calls this operation to carry out the named step with the supplied arguments.
                         addSeatButton(seat);
@@ -136,8 +145,7 @@ public class SeatGrid extends JPanel {
             button.setBackground(Color.decode(seat.getColor()));
             // Sets the text or drawing color for this component.
             button.setForeground(VenueCanvas.contrast(Color.decode(seat.getColor())));
-        }
-        // Handles the remaining case after the earlier condition was false.
+        } // Handles the remaining case after the earlier condition was false.
         else {
             // Displays this text in the named Swing component.
             button.setText("×");

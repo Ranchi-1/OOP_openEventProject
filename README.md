@@ -78,3 +78,12 @@ OpenEvent/
 Never commit passwords, database credentials, tokens, private URLs, local
 machine paths, or generated build output. Use environment variables or the
 ignored local configuration file for secrets.
+
+## Current implementation — 29 October 2026
+
+New venues start with a blank section overview and a movable/resizable stage. Add sections by clicking the empty canvas; drag and resize them directly. Click a section for the familiar seat grid, name, color, outline and ticket assignment. Existing legacy grids remain editable; saved section layouts are preserved. Customer overview/section navigation is retained. Host registration is now available next to Customer registration.
+
+The project-owned keeptoo.KGradientPanel source replaces the external JAR dependency for the properties used by these forms. The build targets Java 17+. See TEAM_SETUP.md for a fresh computer/database setup. QA evidence includes 141 baseline checks (27 acceptance, 42 venue, 29 simple-grid/Host, 29 usability, 14 overview/portability) plus six final canvas mouse-gesture regressions, all passed. The final gesture fix and a clean Java 17 compile without any KGradientPanel JAR also passed. No framework-specific Palette installation is required to run the project.
+
+
+Current submission report: documentation/Group6_OpenEvent_Submission.docx. It contains the simplified venue workflow, OOP explanation, report-specific UML, database relationships and QA. The earlier reports and restored/shared diagrams were not overwritten.

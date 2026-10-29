@@ -1,12 +1,9 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.ui;
 
 /**
-* NetBeans GUI Builder form. Edit layout in Design; behavior lives outside
-* generated code.
-*/
+ * NetBeans GUI Builder form. Edit layout in Design; behavior lives outside
+ * generated code.
+ */
 // Defines a class that inherits the fields and behavior of its parent type.
 public class HostView extends javax.swing.JPanel {
 
@@ -20,395 +17,221 @@ public class HostView extends javax.swing.JPanel {
         "unchecked", "rawtypes"
     })
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    // NetBeans generates this layout code from the matching .form file; positions are measured in pixels.
-    private void initComponents(){
-        // Updates this working value before the next step.
-        heading=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        subtitle=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        eventSelector=new javax.swing.JComboBox();
-        // Updates this working value before the next step.
-        refresh=new javax.swing.JButton();
-        // Updates this working value before the next step.
-        edit=new javax.swing.JButton();
-        // Updates this working value before the next step.
-        create=new javax.swing.JButton();
-        // Updates this working value before the next step.
-        hostBanner=new keeptoo.KGradientPanel();
-        // Updates this working value before the next step.
-        eventTitle=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        eventMeta=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        salesCard=new javax.swing.JPanel();
-        // Updates this working value before the next step.
-        salesLabel=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        sales=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        ticketsCard=new javax.swing.JPanel();
-        // Updates this working value before the next step.
-        ticketLabel=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        tickets=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        checkinsCard=new javax.swing.JPanel();
-        // Updates this working value before the next step.
-        checkinsLabel=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        checkins=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        checkinLabel=new javax.swing.JLabel();
-        // Updates this working value before the next step.
-        ticketCode=new javax.swing.JTextField();
-        // Updates this working value before the next step.
-        checkIn=new javax.swing.JButton();
-        // Updates this working value before the next step.
-        cancel=new javax.swing.JButton();
-        // Updates this working value before the next step.
-        tableScroll=new javax.swing.JScrollPane();
-        // Updates this working value before the next step.
-        checkinResult=new javax.swing.JLabel();
-        // Calls this operation to carry out the named step with the supplied arguments.
+    private void initComponents() {
+
+        heading = new javax.swing.JLabel();
+        subtitle = new javax.swing.JLabel();
+        eventSelector = new javax.swing.JComboBox();
+        refresh = new javax.swing.JButton();
+        edit = new javax.swing.JButton();
+        create = new javax.swing.JButton();
+        hostBanner = new keeptoo.KGradientPanel();
+        eventTitle = new javax.swing.JLabel();
+        eventMeta = new javax.swing.JLabel();
+        salesCard = new javax.swing.JPanel();
+        salesLabel = new javax.swing.JLabel();
+        sales = new javax.swing.JLabel();
+        ticketsCard = new javax.swing.JPanel();
+        ticketLabel = new javax.swing.JLabel();
+        tickets = new javax.swing.JLabel();
+        checkinsCard = new javax.swing.JPanel();
+        checkinsLabel = new javax.swing.JLabel();
+        checkins = new javax.swing.JLabel();
+        checkinLabel = new javax.swing.JLabel();
+        ticketCode = new javax.swing.JTextField();
+        checkIn = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
+        tableScroll = new javax.swing.JScrollPane();
+        checkinResult = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(247, 246, 251));
+        setPreferredSize(new java.awt.Dimension(1176, 780));
         setLayout(null);
-        // Calls this operation to carry out the named step with the supplied arguments.
-        setBackground(new java.awt.Color(247,246,251));
-        // Calls this operation to carry out the named step with the supplied arguments.
-        setPreferredSize(new java.awt.Dimension(1176,780));
-        // Displays this text in the named Swing component.
+
         heading.setText("Host dashboard");
-        // Sets the font family, style and point size used to draw this component.
-        heading.setFont(new java.awt.Font("Segoe UI",1,28));
-        // Sets the text or drawing color for this component.
-        heading.setForeground(new java.awt.Color(33,27,53));
-        // Positions this component using x, y, width and height, measured in pixels.
-        heading.setBounds(32,18,1050,40);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        heading.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        heading.setForeground(new java.awt.Color(33, 27, 53));
         add(heading);
-        // Displays this text in the named Swing component.
+        heading.setBounds(32, 18, 1050, 40);
+
         subtitle.setText("Choose an event to view bookings, manage the venue, or check in a guest.");
-        // Sets the font family, style and point size used to draw this component.
-        subtitle.setFont(new java.awt.Font("Segoe UI",0,14));
-        // Sets the text or drawing color for this component.
-        subtitle.setForeground(new java.awt.Color(130,124,145));
-        // Positions this component using x, y, width and height, measured in pixels.
-        subtitle.setBounds(32,60,1050,25);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        subtitle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        subtitle.setForeground(new java.awt.Color(130, 124, 145));
         add(subtitle);
-        // Sets the font family, style and point size used to draw this component.
-        eventSelector.setFont(new java.awt.Font("Segoe UI",0,14));
-        // Sets the text or drawing color for this component.
-        eventSelector.setForeground(new java.awt.Color(33,27,53));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        eventSelector.setBackground(new java.awt.Color(255,255,255));
-        // Supplies the list, combo-box or table data displayed by this control.
-        eventSelector.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[]{}));
-        // Positions this component using x, y, width and height, measured in pixels.
-        eventSelector.setBounds(32,104,570,40);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        subtitle.setBounds(32, 60, 1050, 25);
+
+        eventSelector.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        eventSelector.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 255)));
         add(eventSelector);
-        // Displays this text in the named Swing component.
+        eventSelector.setBounds(32, 104, 570, 40);
+
         refresh.setText("Refresh");
-        // Sets the font family, style and point size used to draw this component.
-        refresh.setFont(new java.awt.Font("Segoe UI",1,14));
-        // Sets the text or drawing color for this component.
-        refresh.setForeground(new java.awt.Color(108,59,240));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        refresh.setBackground(new java.awt.Color(238,232,254));
-        // Calls this operation to carry out the named step with the supplied arguments.
-        refresh.setFocusPainted(false);
-        // Changes the pointer appearance to communicate an action or a busy operation.
-        refresh.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
-        // Positions this component using x, y, width and height, measured in pixels.
-        refresh.setBounds(622,104,130,40);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        refresh.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        refresh.setForeground(new java.awt.Color(108, 59, 240));
+        refresh.setBackground(new java.awt.Color(238, 232, 254));
         add(refresh);
-        // Displays this text in the named Swing component.
+        refresh.setBounds(622, 104, 130, 40);
+
         edit.setText("Edit event & venue");
-        // Sets the font family, style and point size used to draw this component.
-        edit.setFont(new java.awt.Font("Segoe UI",1,14));
-        // Sets the text or drawing color for this component.
-        edit.setForeground(new java.awt.Color(108,59,240));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        edit.setBackground(new java.awt.Color(238,232,254));
-        // Calls this operation to carry out the named step with the supplied arguments.
-        edit.setFocusPainted(false);
-        // Changes the pointer appearance to communicate an action or a busy operation.
-        edit.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
-        // Positions this component using x, y, width and height, measured in pixels.
-        edit.setBounds(768,104,180,40);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        edit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        edit.setForeground(new java.awt.Color(108, 59, 240));
+        edit.setBackground(new java.awt.Color(238, 232, 254));
         add(edit);
-        // Displays this text in the named Swing component.
+        edit.setBounds(768, 104, 180, 40);
+
         create.setText("+ Create event");
-        // Sets the font family, style and point size used to draw this component.
-        create.setFont(new java.awt.Font("Segoe UI",1,14));
-        // Sets the text or drawing color for this component.
-        create.setForeground(new java.awt.Color(255,255,255));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        create.setBackground(new java.awt.Color(108,59,240));
-        // Calls this operation to carry out the named step with the supplied arguments.
-        create.setFocusPainted(false);
-        // Changes the pointer appearance to communicate an action or a busy operation.
-        create.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
-        // Positions this component using x, y, width and height, measured in pixels.
-        create.setBounds(964,104,178,40);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        create.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        create.setForeground(new java.awt.Color(255, 255, 255));
+        create.setBackground(new java.awt.Color(108, 59, 240));
         add(create);
-        // Sets the font family, style and point size used to draw this component.
-        hostBanner.setFont(new java.awt.Font("Segoe UI",0,14));
-        // Sets the text or drawing color for this component.
-        hostBanner.setForeground(new java.awt.Color(33,27,53));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        hostBanner.setkStartColor(new java.awt.Color(129,59,240));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        hostBanner.setkEndColor(new java.awt.Color(67,55,217));
-        // Chooses how child components are arranged inside this container.
+        create.setBounds(964, 104, 178, 40);
+
+        hostBanner.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        hostBanner.setForeground(new java.awt.Color(33, 27, 53));
         hostBanner.setLayout(null);
-        // Displays this text in the named Swing component.
+
         eventTitle.setText("Your event overview");
-        // Sets the font family, style and point size used to draw this component.
-        eventTitle.setFont(new java.awt.Font("Segoe UI",1,23));
-        // Sets the text or drawing color for this component.
-        eventTitle.setForeground(new java.awt.Color(255,255,255));
-        // Positions this component using x, y, width and height, measured in pixels.
-        eventTitle.setBounds(20,12,1060,30);
-        // Adds this object to the collection or this child component to its parent container.
+        eventTitle.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        eventTitle.setForeground(new java.awt.Color(255, 255, 255));
         hostBanner.add(eventTitle);
-        // Displays this text in the named Swing component.
+        eventTitle.setBounds(20, 12, 1060, 30);
+
         eventMeta.setText("Select an event to begin.");
-        // Sets the font family, style and point size used to draw this component.
-        eventMeta.setFont(new java.awt.Font("Segoe UI",0,13));
-        // Sets the text or drawing color for this component.
-        eventMeta.setForeground(new java.awt.Color(238,230,255));
-        // Positions this component using x, y, width and height, measured in pixels.
-        eventMeta.setBounds(20,48,1060,24);
-        // Adds this object to the collection or this child component to its parent container.
+        eventMeta.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        eventMeta.setForeground(new java.awt.Color(238, 230, 255));
         hostBanner.add(eventMeta);
-        // Positions this component using x, y, width and height, measured in pixels.
-        hostBanner.setBounds(32,165,1110,82);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        eventMeta.setBounds(20, 48, 1060, 24);
+
         add(hostBanner);
-        // Sets the font family, style and point size used to draw this component.
-        salesCard.setFont(new java.awt.Font("Segoe UI",0,14));
-        // Sets the text or drawing color for this component.
-        salesCard.setForeground(new java.awt.Color(33,27,53));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        salesCard.setBackground(new java.awt.Color(255,255,255));
-        // Chooses how child components are arranged inside this container.
+        hostBanner.setBounds(32, 165, 1110, 82);
+
+        salesCard.setBackground(new java.awt.Color(255, 255, 255));
+        salesCard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        salesCard.setForeground(new java.awt.Color(33, 27, 53));
+        salesCard.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         salesCard.setLayout(null);
-        // Displays this text in the named Swing component.
+
         salesLabel.setText("SIMULATED NET SALES");
-        // Sets the font family, style and point size used to draw this component.
-        salesLabel.setFont(new java.awt.Font("Segoe UI",1,12));
-        // Sets the text or drawing color for this component.
-        salesLabel.setForeground(new java.awt.Color(130,124,145));
-        // Positions this component using x, y, width and height, measured in pixels.
-        salesLabel.setBounds(18,10,320,22);
-        // Adds this object to the collection or this child component to its parent container.
+        salesLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        salesLabel.setForeground(new java.awt.Color(130, 124, 145));
         salesCard.add(salesLabel);
-        // Displays this text in the named Swing component.
+        salesLabel.setBounds(18, 10, 320, 22);
+
+        sales.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        sales.setForeground(new java.awt.Color(108, 59, 240));
         sales.setText("PHP 0.00");
-        // Sets the font family, style and point size used to draw this component.
-        sales.setFont(new java.awt.Font("Segoe UI",1,28));
-        // Sets the text or drawing color for this component.
-        sales.setForeground(new java.awt.Color(108,59,240));
-        // Positions this component using x, y, width and height, measured in pixels.
-        sales.setBounds(18,40,320,40);
-        // Adds this object to the collection or this child component to its parent container.
         salesCard.add(sales);
-        // Positions this component using x, y, width and height, measured in pixels.
-        salesCard.setBounds(32,267,355,94);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        sales.setBounds(18, 40, 320, 40);
+
         add(salesCard);
-        // Sets the font family, style and point size used to draw this component.
-        ticketsCard.setFont(new java.awt.Font("Segoe UI",0,14));
-        // Sets the text or drawing color for this component.
-        ticketsCard.setForeground(new java.awt.Color(33,27,53));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        ticketsCard.setBackground(new java.awt.Color(255,255,255));
-        // Chooses how child components are arranged inside this container.
+        salesCard.setBounds(32, 267, 355, 94);
+
+        ticketsCard.setBackground(new java.awt.Color(255, 255, 255));
+        ticketsCard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ticketsCard.setForeground(new java.awt.Color(33, 27, 53));
+        ticketsCard.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ticketsCard.setLayout(null);
-        // Displays this text in the named Swing component.
+
+        ticketLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ticketLabel.setForeground(new java.awt.Color(130, 124, 145));
         ticketLabel.setText("TICKETS / CAPACITY");
-        // Sets the font family, style and point size used to draw this component.
-        ticketLabel.setFont(new java.awt.Font("Segoe UI",1,12));
-        // Sets the text or drawing color for this component.
-        ticketLabel.setForeground(new java.awt.Color(130,124,145));
-        // Positions this component using x, y, width and height, measured in pixels.
-        ticketLabel.setBounds(18,10,320,22);
-        // Adds this object to the collection or this child component to its parent container.
         ticketsCard.add(ticketLabel);
-        // Displays this text in the named Swing component.
+        ticketLabel.setBounds(18, 10, 320, 22);
+
         tickets.setText("0 / 0");
-        // Sets the font family, style and point size used to draw this component.
-        tickets.setFont(new java.awt.Font("Segoe UI",1,28));
-        // Sets the text or drawing color for this component.
-        tickets.setForeground(new java.awt.Color(33,27,53));
-        // Positions this component using x, y, width and height, measured in pixels.
-        tickets.setBounds(18,40,320,40);
-        // Adds this object to the collection or this child component to its parent container.
+        tickets.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        tickets.setForeground(new java.awt.Color(33, 27, 53));
         ticketsCard.add(tickets);
-        // Positions this component using x, y, width and height, measured in pixels.
-        ticketsCard.setBounds(410,267,355,94);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        tickets.setBounds(18, 40, 320, 40);
+
         add(ticketsCard);
-        // Sets the font family, style and point size used to draw this component.
-        checkinsCard.setFont(new java.awt.Font("Segoe UI",0,14));
-        // Sets the text or drawing color for this component.
-        checkinsCard.setForeground(new java.awt.Color(33,27,53));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        checkinsCard.setBackground(new java.awt.Color(255,255,255));
-        // Chooses how child components are arranged inside this container.
+        ticketsCard.setBounds(410, 267, 355, 94);
+
+        checkinsCard.setBackground(new java.awt.Color(255, 255, 255));
+        checkinsCard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        checkinsCard.setForeground(new java.awt.Color(33, 27, 53));
+        checkinsCard.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         checkinsCard.setLayout(null);
-        // Displays this text in the named Swing component.
+
+        checkinsLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        checkinsLabel.setForeground(new java.awt.Color(130, 124, 145));
         checkinsLabel.setText("CHECKED IN");
-        // Sets the font family, style and point size used to draw this component.
-        checkinsLabel.setFont(new java.awt.Font("Segoe UI",1,12));
-        // Sets the text or drawing color for this component.
-        checkinsLabel.setForeground(new java.awt.Color(130,124,145));
-        // Positions this component using x, y, width and height, measured in pixels.
-        checkinsLabel.setBounds(18,10,320,22);
-        // Adds this object to the collection or this child component to its parent container.
         checkinsCard.add(checkinsLabel);
-        // Displays this text in the named Swing component.
+        checkinsLabel.setBounds(18, 10, 320, 22);
+
+        checkins.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        checkins.setForeground(new java.awt.Color(35, 141, 130));
         checkins.setText("0");
-        // Sets the font family, style and point size used to draw this component.
-        checkins.setFont(new java.awt.Font("Segoe UI",1,28));
-        // Sets the text or drawing color for this component.
-        checkins.setForeground(new java.awt.Color(35,141,130));
-        // Positions this component using x, y, width and height, measured in pixels.
-        checkins.setBounds(18,40,320,40);
-        // Adds this object to the collection or this child component to its parent container.
         checkinsCard.add(checkins);
-        // Positions this component using x, y, width and height, measured in pixels.
-        checkinsCard.setBounds(788,267,354,94);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        checkins.setBounds(18, 40, 320, 40);
+
         add(checkinsCard);
-        // Displays this text in the named Swing component.
+        checkinsCard.setBounds(788, 267, 354, 94);
+
         checkinLabel.setText("Let your people in.");
-        // Sets the font family, style and point size used to draw this component.
-        checkinLabel.setFont(new java.awt.Font("Segoe UI",1,22));
-        // Sets the text or drawing color for this component.
-        checkinLabel.setForeground(new java.awt.Color(33,27,53));
-        // Positions this component using x, y, width and height, measured in pixels.
-        checkinLabel.setBounds(32,386,760,30);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        checkinLabel.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        checkinLabel.setForeground(new java.awt.Color(33, 27, 53));
         add(checkinLabel);
-        // Sets the font family, style and point size used to draw this component.
-        ticketCode.setFont(new java.awt.Font("Segoe UI",0,14));
-        // Sets the text or drawing color for this component.
-        ticketCode.setForeground(new java.awt.Color(33,27,53));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        ticketCode.setBackground(new java.awt.Color(255,255,255));
-        // Positions this component using x, y, width and height, measured in pixels.
-        ticketCode.setBounds(32,431,570,42);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        checkinLabel.setBounds(32, 386, 760, 30);
+
+        ticketCode.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ticketCode.setForeground(new java.awt.Color(33, 27, 53));
+        ticketCode.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 255)));
         add(ticketCode);
-        // Displays this text in the named Swing component.
+        ticketCode.setBounds(32, 431, 570, 42);
+
         checkIn.setText("Validate & check in  →");
-        // Sets the font family, style and point size used to draw this component.
-        checkIn.setFont(new java.awt.Font("Segoe UI",1,14));
-        // Sets the text or drawing color for this component.
-        checkIn.setForeground(new java.awt.Color(255,255,255));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        checkIn.setBackground(new java.awt.Color(108,59,240));
-        // Calls this operation to carry out the named step with the supplied arguments.
-        checkIn.setFocusPainted(false);
-        // Changes the pointer appearance to communicate an action or a busy operation.
-        checkIn.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
-        // Positions this component using x, y, width and height, measured in pixels.
-        checkIn.setBounds(622,431,284,42);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        checkIn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        checkIn.setForeground(new java.awt.Color(255, 255, 255));
+        checkIn.setBackground(new java.awt.Color(108, 59, 240));
         add(checkIn);
-        // Displays this text in the named Swing component.
+        checkIn.setBounds(622, 431, 284, 42);
+
         cancel.setText("Refund selected");
-        // Sets the font family, style and point size used to draw this component.
-        cancel.setFont(new java.awt.Font("Segoe UI",1,14));
-        // Sets the text or drawing color for this component.
-        cancel.setForeground(new java.awt.Color(108,59,240));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        cancel.setBackground(new java.awt.Color(238,232,254));
-        // Calls this operation to carry out the named step with the supplied arguments.
-        cancel.setFocusPainted(false);
-        // Changes the pointer appearance to communicate an action or a busy operation.
-        cancel.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
-        // Positions this component using x, y, width and height, measured in pixels.
-        cancel.setBounds(924,431,218,42);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        cancel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cancel.setForeground(new java.awt.Color(108, 59, 240));
+        cancel.setBackground(new java.awt.Color(238, 232, 254));
         add(cancel);
-        // Sets the font family, style and point size used to draw this component.
-        tableScroll.setFont(new java.awt.Font("Segoe UI",0,14));
-        // Sets the text or drawing color for this component.
-        tableScroll.setForeground(new java.awt.Color(33,27,53));
-        // Sets this component color; the gradient start/end colors form the purple theme.
-        tableScroll.setBackground(new java.awt.Color(255,255,255));
-        // Positions this component using x, y, width and height, measured in pixels.
-        tableScroll.setBounds(32,495,1110,220);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        cancel.setBounds(924, 431, 218, 42);
+
+        tableScroll.setBackground(new java.awt.Color(255, 255, 255));
+        tableScroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tableScroll.setForeground(new java.awt.Color(33, 27, 53));
+        tableScroll.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(tableScroll);
-        // Displays this text in the named Swing component.
+        tableScroll.setBounds(32, 495, 1110, 220);
+
         checkinResult.setText("A ticket can be checked in once. Refresh to see updated records.");
-        // Sets the font family, style and point size used to draw this component.
-        checkinResult.setFont(new java.awt.Font("Segoe UI",0,14));
-        // Sets the text or drawing color for this component.
-        checkinResult.setForeground(new java.awt.Color(130,124,145));
-        // Positions this component using x, y, width and height, measured in pixels.
-        checkinResult.setBounds(32,734,1110,30);
-        // Calls this operation to carry out the named step with the supplied arguments.
+        checkinResult.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        checkinResult.setForeground(new java.awt.Color(130, 124, 145));
         add(checkinResult);
-    }
-    // </editor-fold>//GEN-END:initComponents
+        checkinResult.setBounds(32, 734, 1110, 30);
+    }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    // Stores heading.
-    public javax.swing.JLabel heading;
-    // Stores subtitle.
-    public javax.swing.JLabel subtitle;
-    // Stores event selector.
-    public javax.swing.JComboBox eventSelector;
-    // Stores refresh.
-    public javax.swing.JButton refresh;
-    // Stores edit.
-    public javax.swing.JButton edit;
-    // Stores create.
-    public javax.swing.JButton create;
-    // Stores host banner.
-    public keeptoo.KGradientPanel hostBanner;
-    // Stores event title.
-    public javax.swing.JLabel eventTitle;
-    // Stores event meta.
-    public javax.swing.JLabel eventMeta;
-    // Stores sales card.
-    public javax.swing.JPanel salesCard;
-    // Stores sales label.
-    public javax.swing.JLabel salesLabel;
-    // Stores sales.
-    public javax.swing.JLabel sales;
-    // Stores tickets card.
-    public javax.swing.JPanel ticketsCard;
-    // Stores ticket label.
-    public javax.swing.JLabel ticketLabel;
-    // Stores tickets.
-    public javax.swing.JLabel tickets;
-    // Stores checkins card.
-    public javax.swing.JPanel checkinsCard;
-    // Stores checkins label.
-    public javax.swing.JLabel checkinsLabel;
-    // Stores checkins.
-    public javax.swing.JLabel checkins;
-    // Stores checkin label.
-    public javax.swing.JLabel checkinLabel;
-    // Stores ticket code.
-    public javax.swing.JTextField ticketCode;
-    // Stores check in.
-    public javax.swing.JButton checkIn;
-    // Stores cancel.
     public javax.swing.JButton cancel;
-    // Stores table scroll.
-    public javax.swing.JScrollPane tableScroll;
-    // Stores checkin result.
+    public javax.swing.JButton checkIn;
+    public javax.swing.JLabel checkinLabel;
     public javax.swing.JLabel checkinResult;
+    public javax.swing.JLabel checkins;
+    public javax.swing.JPanel checkinsCard;
+    public javax.swing.JLabel checkinsLabel;
+    public javax.swing.JButton create;
+    public javax.swing.JButton edit;
+    public javax.swing.JLabel eventMeta;
+    public javax.swing.JComboBox eventSelector;
+    public javax.swing.JLabel eventTitle;
+    public javax.swing.JLabel heading;
+    public keeptoo.KGradientPanel hostBanner;
+    public javax.swing.JButton refresh;
+    public javax.swing.JLabel sales;
+    public javax.swing.JPanel salesCard;
+    public javax.swing.JLabel salesLabel;
+    public javax.swing.JLabel subtitle;
+    public javax.swing.JScrollPane tableScroll;
+    public javax.swing.JTextField ticketCode;
+    public javax.swing.JLabel ticketLabel;
+    public javax.swing.JLabel tickets;
+    public javax.swing.JPanel ticketsCard;
     // End of variables declaration//GEN-END:variables
 }

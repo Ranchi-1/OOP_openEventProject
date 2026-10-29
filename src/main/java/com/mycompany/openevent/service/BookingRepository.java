@@ -1,6 +1,3 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.service;
 
 // Imports Customer so this class can use that type by its short name.
@@ -129,13 +126,11 @@ public final class BookingRepository {
         if ("SPORTS".equals(type)) {
             // Returns this result to the method that called the current operation.
             return new SportsMatch(id, host, title, venue, description, image, starts, early, price, published);
-        }
-        // Checks the next possible case when the earlier condition was false.
+        } // Checks the next possible case when the earlier condition was false.
         else if ("MOVIE".equals(type)) {
             // Returns this result to the method that called the current operation.
             return new MovieScreening(id, host, title, venue, description, image, starts, early, price, published);
-        }
-        // Handles the remaining case after the earlier condition was false.
+        } // Handles the remaining case after the earlier condition was false.
         else {
             // Returns this result to the method that called the current operation.
             return new Concert(id, host, title, venue, description, image, starts, early, price, published);
@@ -221,8 +216,8 @@ public final class BookingRepository {
             // Prepares the local seats value used in the following steps.
             List<Seat> seats = new ArrayList<Seat>();
             // Runs the SELECT and obtains a ResultSet containing the returned rows.
-            try (PreparedStatement seatStatement = prepareQuery(connection, "SELECT s.*,sec.category,sec.color,sec.ticket_name,sec.ticket_price,sec.early_bird FROM seats s JOIN sections sec ON sec.id=s.section_id WHERE " +
-                    "s.event_id=? ORDER BY row_no,col_no", new Object[]{id}); ResultSet seatResultSet = seatStatement.executeQuery()) {
+            try (PreparedStatement seatStatement = prepareQuery(connection, "SELECT s.*,sec.category,sec.color,sec.ticket_name,sec.ticket_price,sec.early_bird FROM seats s JOIN sections sec ON sec.id=s.section_id WHERE "
+                    + "s.event_id=? ORDER BY row_no,col_no", new Object[]{id}); ResultSet seatResultSet = seatStatement.executeQuery()) {
                 // Moves to the next database row; false means there are no more matching records.
                 while (seatResultSet.next()) {
                     // Adds this object to the collection or this child component to its parent container.
@@ -230,9 +225,11 @@ public final class BookingRepository {
                 }
             }
             // Returns this result to the method that called the current operation.
-            VenuePlan plan=VenuePlanRepository.read(connection,id);
-            if(plan!=null) { return new VenueLayout(plan,seats); }
-            return new VenueLayout(resultSet.getInt("grid_rows"), resultSet.getInt("grid_cols"), resultSet.getInt("stage_row"), resultSet.getInt("stage_col"), resultSet.getInt("stage_width"), seats, VenuePlanRepository.readTypes(connection,id));
+            VenuePlan plan = VenuePlanRepository.read(connection, id);
+            if (plan != null) {
+                return new VenueLayout(plan, seats);
+            }
+            return new VenueLayout(resultSet.getInt("grid_rows"), resultSet.getInt("grid_cols"), resultSet.getInt("stage_row"), resultSet.getInt("stage_col"), resultSet.getInt("stage_width"), seats, VenuePlanRepository.readTypes(connection, id));
         }
     }
 
@@ -278,8 +275,7 @@ public final class BookingRepository {
                 if (id == 0) {
                     // Saves the new row using the listed placeholder values and returns its generated ID when needed.
                     id = insertRecord(connection, "INSERT INTO events(host_id,type,title,venue,description,image,starts_at,early_bird_until,base_price,published) VALUES(?,?,?,?,?,?,?,?,?,?)", new Object[]{event.getHostId(), event.eventType(), event.getTitle(), event.getVenue(), event.getDescription(), event.getImage(), event.getStartsAt(), event.getEarlyBirdUntil(), event.getBasePrice(), event.isPublished()});
-                }
-                // Handles the remaining case after the earlier condition was false.
+                } // Handles the remaining case after the earlier condition was false.
                 else {
                     // Calls this operation to carry out the named step with the supplied arguments.
                     security.requireHost(session, event(connection, id, true).getHostId());
@@ -313,10 +309,10 @@ public final class BookingRepository {
                         sectionIds.put(section.getName(), insertRecord(connection, "INSERT INTO sections(event_id,category,color) VALUES(?,?,?)", new Object[]{id, section.getName(), section.getColor()}));
                     }
                     // Visits each object in the collection using an ordinary enhanced for loop.
-                    if(!layout.getTicketTypes().isEmpty()) {
-                        for(TicketType type:layout.getTicketTypes()) {
-                            if(!sectionIds.containsKey(type.getCode())) {
-                                sectionIds.put(type.getCode(),insertRecord(connection,"INSERT INTO sections(event_id,category,color) VALUES(?,?,?)",new Object[]{id,type.getCode(),type.getColor()}));
+                    if (!layout.getTicketTypes().isEmpty()) {
+                        for (TicketType type : layout.getTicketTypes()) {
+                            if (!sectionIds.containsKey(type.getCode())) {
+                                sectionIds.put(type.getCode(), insertRecord(connection, "INSERT INTO sections(event_id,category,color) VALUES(?,?,?)", new Object[]{id, type.getCode(), type.getColor()}));
                             }
                         }
                     }
@@ -327,25 +323,31 @@ public final class BookingRepository {
                 }
                 // Commits all transaction changes together so other connections can see the completed result.
                 // Save offers and overview in the same transaction as seats and event details.
-                if(layout.isFlexible()) {
-                    VenuePlan oldPlan=null;
-                    if(!replaceLayout) { oldPlan=VenuePlanRepository.read(connection,id); }
-                    if(!replaceLayout && (oldPlan==null || !sameGeometry(oldPlan,layout.getPlan()))) {
+                if (layout.isFlexible()) {
+                    VenuePlan oldPlan = null;
+                    if (!replaceLayout) {
+                        oldPlan = VenuePlanRepository.read(connection, id);
+                    }
+                    if (!replaceLayout && (oldPlan == null || !sameGeometry(oldPlan, layout.getPlan()))) {
                         throw new IllegalArgumentException("Booked layouts cannot be moved, resized, reassigned or renumbered.");
                     }
-                    VenuePlanRepository.updateTypes(connection,id,layout.getPlan().getTicketTypes());
-                    if(replaceLayout) { VenuePlanRepository.save(connection,id,layout.getPlan()); }
-                }
-                else {
+                    VenuePlanRepository.updateTypes(connection, id, layout.getPlan().getTicketTypes());
+                    if (replaceLayout) {
+                        VenuePlanRepository.save(connection, id, layout.getPlan());
+                    }
+                } else {
                     // Save names, prices and unused grid offers in the same transaction.
-                    if(!layout.getTicketTypes().isEmpty()) { VenuePlanRepository.updateTypes(connection,id,layout.getTicketTypes()); }
-                    if(replaceLayout) { VenuePlanRepository.save(connection,id,null); }
+                    if (!layout.getTicketTypes().isEmpty()) {
+                        VenuePlanRepository.updateTypes(connection, id, layout.getTicketTypes());
+                    }
+                    if (replaceLayout) {
+                        VenuePlanRepository.save(connection, id, null);
+                    }
                 }
                 connection.commit();
                 // Returns this result to the method that called the current operation.
                 return id;
-            }
-            // Handles this error without reporting the failed operation as a success.
+            } // Handles this error without reporting the failed operation as a success.
             catch (SQLException | RuntimeException ex) {
                 // Undoes the uncommitted changes so a failure cannot leave a partial booking or refund.
                 connection.rollback();
@@ -377,8 +379,8 @@ public final class BookingRepository {
                 // Prepares the local seat value used in the following steps.
                 Seat seat;
                 // Runs the SELECT and obtains a ResultSet containing the returned rows.
-                try (PreparedStatement preparedStatement = prepareQuery(connection, "SELECT s.*,sec.category,sec.color,sec.ticket_name,sec.ticket_price,sec.early_bird FROM seats s JOIN sections sec ON sec.id=s.section_id WHERE s.id=? AND " +
-                        "s.event_id=? FOR UPDATE", new Object[]{request.getSeatId(), request.getEventId()}); ResultSet resultSet = preparedStatement.executeQuery()) {
+                try (PreparedStatement preparedStatement = prepareQuery(connection, "SELECT s.*,sec.category,sec.color,sec.ticket_name,sec.ticket_price,sec.early_bird FROM seats s JOIN sections sec ON sec.id=s.section_id WHERE s.id=? AND "
+                        + "s.event_id=? FOR UPDATE", new Object[]{request.getSeatId(), request.getEventId()}); ResultSet resultSet = preparedStatement.executeQuery()) {
                     // Moves to the next database row; false means there are no more matching records.
                     if (!resultSet.next()) {
                         // Stops this operation with a clear error; the caller can display or test the failure.
@@ -406,8 +408,7 @@ public final class BookingRepository {
                 insertRecord(connection, "INSERT INTO receipts(ticket_id,payment_id,number) VALUES(?,?,?)", new Object[]{ticketId, paymentId, "R-" + code.substring(3)});
                 // Commits all transaction changes together so other connections can see the completed result.
                 connection.commit();
-            }
-            // Handles this error without reporting the failed operation as a success.
+            } // Handles this error without reporting the failed operation as a success.
             catch (SQLException | RuntimeException ex) {
                 // Undoes the uncommitted changes so a failure cannot leave a partial booking or refund.
                 connection.rollback();
@@ -443,9 +444,9 @@ public final class BookingRepository {
             parameters = new Object[]{session.getUser().getId(), eventId};
         }
         // Prepares the local sql value used in the following steps.
-        String sql = "SELECT t.*,e.title,e.venue,e.starts_at,c.name,p.status payment_status,p.method,p.reference,r.number FROM " +
-                "tickets t JOIN events e ON e.id=t.event_id JOIN customers c ON c.id=t.customer_id JOIN payments p ON " +
-                "p.ticket_id=t.id JOIN receipts r ON r.ticket_id=t.id WHERE " + accessCondition + " ORDER BY t.issued_at DESC,t.id DESC";
+        String sql = "SELECT t.*,e.title,e.venue,e.starts_at,c.name,p.status payment_status,p.method,p.reference,r.number FROM "
+                + "tickets t JOIN events e ON e.id=t.event_id JOIN customers c ON c.id=t.customer_id JOIN payments p ON "
+                + "p.ticket_id=t.id JOIN receipts r ON r.ticket_id=t.id WHERE " + accessCondition + " ORDER BY t.issued_at DESC,t.id DESC";
         // Runs the SELECT and obtains a ResultSet containing the returned rows.
         try (Connection connection = Database.connect(); PreparedStatement preparedStatement = prepareQuery(connection, sql, parameters); ResultSet resultSet = preparedStatement.executeQuery()) {
             // Prepares the local list value used in the following steps.
@@ -493,8 +494,7 @@ public final class BookingRepository {
                     if (session.isHost()) {
                         // Calls this operation to carry out the named step with the supplied arguments.
                         security.requireHost(session, event.getHostId());
-                    }
-                    // Checks the next possible case when the earlier condition was false.
+                    } // Checks the next possible case when the earlier condition was false.
                     else if (session.getUser().getId() != resultSet.getLong("customer_id")) {
                         // Stops this operation with a clear error; the caller can display or test the failure.
                         throw new IllegalArgumentException("This ticket belongs to another Customer.");
@@ -513,8 +513,7 @@ public final class BookingRepository {
                 }
                 // Commits all transaction changes together so other connections can see the completed result.
                 connection.commit();
-            }
-            // Handles this error without reporting the failed operation as a success.
+            } // Handles this error without reporting the failed operation as a success.
             catch (SQLException | RuntimeException ex) {
                 // Undoes the uncommitted changes so a failure cannot leave a partial booking or refund.
                 connection.rollback();
@@ -537,8 +536,8 @@ public final class BookingRepository {
                 // Prepares the local name value used in the following steps.
                 String name;
                 // Runs the SELECT and obtains a ResultSet containing the returned rows.
-                try (PreparedStatement preparedStatement = prepareQuery(connection, "SELECT t.id,t.status,c.name,p.status payment_status FROM tickets t JOIN customers c ON " +
-                        "c.id=t.customer_id JOIN payments p ON p.ticket_id=t.id WHERE t.code=? AND t.event_id=? FOR UPDATE", new Object[]{code.trim().toUpperCase(Locale.ROOT), eventId}); ResultSet resultSet = preparedStatement.executeQuery()) {
+                try (PreparedStatement preparedStatement = prepareQuery(connection, "SELECT t.id,t.status,c.name,p.status payment_status FROM tickets t JOIN customers c ON "
+                        + "c.id=t.customer_id JOIN payments p ON p.ticket_id=t.id WHERE t.code=? AND t.event_id=? FOR UPDATE", new Object[]{code.trim().toUpperCase(Locale.ROOT), eventId}); ResultSet resultSet = preparedStatement.executeQuery()) {
                     // Moves to the next database row; false means there are no more matching records.
                     if (!resultSet.next()) {
                         // Stops this operation with a clear error; the caller can display or test the failure.
@@ -561,8 +560,7 @@ public final class BookingRepository {
                 connection.commit();
                 // Returns this result to the method that called the current operation.
                 return name;
-            }
-            // Handles this error without reporting the failed operation as a success.
+            } // Handles this error without reporting the failed operation as a success.
             catch (SQLException | RuntimeException ex) {
                 // Undoes the uncommitted changes so a failure cannot leave a partial booking or refund.
                 connection.rollback();
@@ -574,55 +572,68 @@ public final class BookingRepository {
 
     // Convert one row using saved offer metadata when present, otherwise retain legacy rules.
     private Seat readSeat(ResultSet row) throws SQLException {
-        if(row.getBigDecimal("ticket_price")!=null) {
-            TicketType type=new TicketType(row.getString("category"),row.getString("ticket_name"),row.getBigDecimal("ticket_price"),row.getString("color"),row.getBoolean("early_bird"));
-            return new Seat(row.getLong("id"),row.getInt("row_no"),row.getInt("col_no"),row.getString("label"),type,row.getString("status"),row.getString("area_code"));
+        if (row.getBigDecimal("ticket_price") != null) {
+            TicketType type = new TicketType(row.getString("category"), row.getString("ticket_name"), row.getBigDecimal("ticket_price"), row.getString("color"), row.getBoolean("early_bird"));
+            return new Seat(row.getLong("id"), row.getInt("row_no"), row.getInt("col_no"), row.getString("label"), type, row.getString("status"), row.getString("area_code"));
         }
-        return new Seat(row.getLong("id"),row.getInt("row_no"),row.getInt("col_no"),row.getString("label"),row.getString("category"),row.getString("color"),row.getString("status"));
+        return new Seat(row.getLong("id"), row.getInt("row_no"), row.getInt("col_no"), row.getString("label"), row.getString("category"), row.getString("color"), row.getString("status"));
     }
-    public List<TicketType> ticketTypes(Session session,long eventId) throws SQLException {
-        try(Connection connection=Database.connect()) {
-            Event event=event(connection,eventId,false);
-            security.requireHost(session,event.getHostId());
-            List<TicketType> types=new ArrayList<TicketType>();
-            try(PreparedStatement query=prepareQuery(connection,"SELECT * FROM sections WHERE event_id=? ORDER BY id",new Object[]{eventId});ResultSet row=query.executeQuery()) {
-                while(row.next()) {
-                    BigDecimal price=row.getBigDecimal("ticket_price");
-                    String code=row.getString("category");
-                    String name=row.getString("ticket_name");
-                    boolean early=row.getBoolean("early_bird");
-                    if(price==null) {
-                        price=event.getBasePrice(); name=code; early="REGULAR".equals(code);
-                        if("VIP".equals(code)) { price=price.multiply(new BigDecimal("1.50")).setScale(2,java.math.RoundingMode.HALF_UP); }
+
+    public List<TicketType> ticketTypes(Session session, long eventId) throws SQLException {
+        try (Connection connection = Database.connect()) {
+            Event event = event(connection, eventId, false);
+            security.requireHost(session, event.getHostId());
+            List<TicketType> types = new ArrayList<TicketType>();
+            try (PreparedStatement query = prepareQuery(connection, "SELECT * FROM sections WHERE event_id=? ORDER BY id", new Object[]{eventId}); ResultSet row = query.executeQuery()) {
+                while (row.next()) {
+                    BigDecimal price = row.getBigDecimal("ticket_price");
+                    String code = row.getString("category");
+                    String name = row.getString("ticket_name");
+                    boolean early = row.getBoolean("early_bird");
+                    if (price == null) {
+                        price = event.getBasePrice();
+                        name = code;
+                        early = "REGULAR".equals(code);
+                        if ("VIP".equals(code)) {
+                            price = price.multiply(new BigDecimal("1.50")).setScale(2, java.math.RoundingMode.HALF_UP);
+                        }
                     }
-                    types.add(new TicketType(code,name,price,row.getString("color"),early));
+                    types.add(new TicketType(code, name, price, row.getString("color"), early));
                 }
             }
             return types;
         }
     }
-    public void updateTicketTypes(Session session,long eventId,List<TicketType> types) throws SQLException {
-        try(Connection connection=Database.connect()) {
+
+    public void updateTicketTypes(Session session, long eventId, List<TicketType> types) throws SQLException {
+        try (Connection connection = Database.connect()) {
             connection.setAutoCommit(false);
             try {
-                security.requireHost(session,event(connection,eventId,true).getHostId());
-                VenuePlanRepository.updateTypes(connection,eventId,types);
+                security.requireHost(session, event(connection, eventId, true).getHostId());
+                VenuePlanRepository.updateTypes(connection, eventId, types);
                 connection.commit();
+            } catch (SQLException | RuntimeException exception) {
+                connection.rollback();
+                throw exception;
             }
-            catch(SQLException | RuntimeException exception) { connection.rollback(); throw exception; }
         }
     }
+
     // Compare every structural value, but allow display names, offer prices and colors to change.
-    private boolean sameGeometry(VenuePlan first,VenuePlan second) {
-        com.mycompany.openevent.model.Stage a=first.getStage();
-        com.mycompany.openevent.model.Stage b=second.getStage();
-        if(!a.getBounds().equals(b.getBounds()) || first.getAreas().size()!=second.getAreas().size()) { return false; }
-        for(int i=0;i<first.getAreas().size();i++) {
-            com.mycompany.openevent.model.VenueArea x=first.getAreas().get(i);
-            com.mycompany.openevent.model.VenueArea y=second.getAreas().get(i);
-            if(!x.getCode().equals(y.getCode()) || !x.getName().equals(y.getName()) || !x.getTypeCode().equals(y.getTypeCode())
-                || !x.getBounds().equals(y.getBounds()) || x.getRows()!=y.getRows() || x.getColumns()!=y.getColumns()
-                || x.getRowOffset()!=y.getRowOffset() || !x.getShape().equals(y.getShape()) || !x.getBlocked().equals(y.getBlocked())) { return false; }
+    private boolean sameGeometry(VenuePlan first, VenuePlan second) {
+        com.mycompany.openevent.model.Stage a = first.getStage();
+        com.mycompany.openevent.model.Stage b = second.getStage();
+        if (!a.getBounds().equals(b.getBounds()) || first.getAreas().size() != second.getAreas().size()) {
+            return false;
+        }
+        for (int i = 0; i < first.getAreas().size(); i++) {
+            com.mycompany.openevent.model.VenueArea x = first.getAreas().get(i);
+            com.mycompany.openevent.model.VenueArea y = second.getAreas().get(i);
+            if (!x.getCode().equals(y.getCode()) || !x.getName().equals(y.getName()) || !x.getTypeCode().equals(y.getTypeCode())
+                    || !x.getBounds().equals(y.getBounds()) || x.getRows() != y.getRows() || x.getColumns() != y.getColumns()
+                    || x.getRowOffset() != y.getRowOffset() || !x.getShape().equals(y.getShape()) || !x.getBlocked().equals(y.getBlocked())) {
+                return false;
+            }
         }
         return true;
     }

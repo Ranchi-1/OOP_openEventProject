@@ -1,6 +1,3 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.model;
 
 // Imports BigDecimal so this class can use that type by its short name.
@@ -10,6 +7,7 @@ import java.time.LocalDateTime;
 
 // Defines the Ticket class and keeps its related data and operations together.
 public class Ticket {
+
     // Stores id.
     private final long id;
     // Stores code.

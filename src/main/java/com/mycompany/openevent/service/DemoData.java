@@ -1,6 +1,3 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.service;
 
 // Imports Session so this class can use that type by its short name.
@@ -84,8 +81,8 @@ public final class DemoData {
             // Prepares the local start value used in the following steps.
             LocalDateTime start = LocalDate.now().plusDays(26 + eventIndex * 7).atTime(19, 0);
             // Prepares the local event value used in the following steps.
-            Event event = new Concert(0, host.getUser().getId(), titles[eventIndex], venues[eventIndex], "A night for the independent scene. Discover local artists, find your people, and support a shared stage. " +
-                    "Doors open one hour before the show. Bring your ticket code for entry.", images[eventIndex], start, start.minusDays(7), new BigDecimal(new String[]{"850", "500", "400"}[eventIndex]), true);
+            Event event = new Concert(0, host.getUser().getId(), titles[eventIndex], venues[eventIndex], "A night for the independent scene. Discover local artists, find your people, and support a shared stage. "
+                    + "Doors open one hour before the show. Bring your ticket code for entry.", images[eventIndex], start, start.minusDays(7), new BigDecimal(new String[]{"850", "500", "400"}[eventIndex]), true);
             // Prepares the local seats value used in the following steps.
             List<Seat> seats = new ArrayList<Seat>();
             // Repeats this block with an index so each relevant position or parameter is processed.

@@ -28,4 +28,4 @@ Teacher reference audited: D:/School/oop/OOP Lesson 3 class.pdf, pages 6–17. A
 
 The synchronized report is Group_6_OpenEvent_UML_Aligned_Documentation.docx. It was exported through native Word and all 30 pages inspected. Copies are in outputs, project/documentation and the original report folder. Primary class/sequence files in those locations are synchronized. The earlier outputs/Group_6_OpenEvent_Revised_Documentation.docx may be an earlier open copy; use the UML_Aligned report for the latest revision. No Java behavior changed in this UML audit; the prior 112 functional/config checks remain valid.
 
-Do not rerun work/uml-password/classes.py or the one-time work/uml-standard/refine.py on completed diagrams. They would reset final routing or duplicate metadata. This task's backup is work/uml-standard/classes-before.drawio.
+

@@ -1,11 +1,15 @@
 package com.mycompany.openevent.model;
 // Import BigDecimal for the explicit types used below.
+
 import java.math.BigDecimal;
 // Import RoundingMode for the explicit types used below.
 import java.math.RoundingMode;
 
-/** A named event-specific offer. Its stable code survives renaming. */
+/**
+ * A named event-specific offer. Its stable code survives renaming.
+ */
 public class TicketType {
+
     // Keep identity separate from the name printed on future tickets.
     private final String code;
     // Keep name private so outside classes use the public operations.
@@ -51,15 +55,33 @@ public class TicketType {
         // Store the validated constructor values in this object.
         this.earlyBird = earlyBird;
     }
+
     // Getters expose values without allowing outside code to overwrite fields.
-    public String getCode() { return code; }
+    public String getCode() {
+        return code;
+    }
+
     // Return the requested value through an accessor.
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
+
     // Return the requested value through an accessor.
-    public BigDecimal getPrice() { return price; }
+    public BigDecimal getPrice() {
+        return price;
+    }
+
     // Return the requested value through an accessor.
-    public String getColor() { return color; }
-    public boolean hasEarlyBird() { return earlyBird; }
+    public String getColor() {
+        return color;
+    }
+
+    public boolean hasEarlyBird() {
+        return earlyBird;
+    }
+
     @Override
-    public String toString() { return name + " · PHP " + price.toPlainString(); }
+    public String toString() {
+        return name + " · PHP " + price.toPlainString();
+    }
 }

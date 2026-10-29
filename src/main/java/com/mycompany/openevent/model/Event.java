@@ -1,6 +1,3 @@
-// Beginner/intermediate edition: explicit classes, getters, loops and conventional listeners.
-// Comments explain executable statements and logic; braces only group the statements.
-// Groups this class with related OpenEvent classes in the same package.
 package com.mycompany.openevent.model;
 
 // Imports BigDecimal so this class can use that type by its short name.
@@ -42,7 +39,7 @@ public abstract class Event {
             throw new IllegalArgumentException("Event title and venue are required.");
         }
         // Continues into this block only when the condition below is true.
-        if (basePrice == null || basePrice.signum() <= 0 || basePrice.compareTo(new BigDecimal("99999999.99"))>0 || basePrice.stripTrailingZeros().scale()>2) {
+        if (basePrice == null || basePrice.signum() <= 0 || basePrice.compareTo(new BigDecimal("99999999.99")) > 0 || basePrice.stripTrailingZeros().scale() > 2) {
             // Stops this operation with a clear error; the caller can display or test the failure.
             throw new IllegalArgumentException("Enter a positive price up to 99,999,999.99 with at most two decimal places.");
         }
@@ -78,12 +75,12 @@ public abstract class Event {
     public BigDecimal calculatePrice(Seat seat, String category) {
         // Custom ticket prices are independent of the legacy Regular/VIP multipliers.
         if (seat.getTicketType() != null) {
-            TicketType type=seat.getTicketType();
+            TicketType type = seat.getTicketType();
             if ((type.getName() + " / Early Bird").equals(category)) {
-                if (!type.hasEarlyBird() || earlyBirdUntil==null || !LocalDateTime.now().isBefore(earlyBirdUntil)) {
+                if (!type.hasEarlyBird() || earlyBirdUntil == null || !LocalDateTime.now().isBefore(earlyBirdUntil)) {
                     throw new IllegalArgumentException("Early Bird is unavailable for this ticket type.");
                 }
-                return type.getPrice().multiply(new BigDecimal("0.80")).setScale(2,RoundingMode.HALF_UP);
+                return type.getPrice().multiply(new BigDecimal("0.80")).setScale(2, RoundingMode.HALF_UP);
             }
             if (!type.getName().equals(category)) {
                 throw new IllegalArgumentException("The ticket type changed. Refresh the event and select the seat again.");
