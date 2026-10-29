@@ -272,6 +272,7 @@ No TODO, FIXME, or “not implemented” markers were found in application sourc
 
 | File | Purpose |
 | --- | --- |
+| [Database setup guide](docs/database.md) | Import, configuration, schema, demo data, backup/restore, and troubleshooting. |
 | [TEAM_SETUP.md](TEAM_SETUP.md) | Installation, private configuration, portable gradient component. |
 | [Venue guide](documentation/FlexibleVenue_Guide.md) | Current workflows, limits, and setup. |
 | [Project report](documentation/Group6_OpenEvent_Submission.docx) | Manuals, report-specific UML, database relationships, and test cases. |
