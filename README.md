@@ -321,4 +321,4 @@ Team members and roles confirmed by the group.
 
 ## License
 
-License: to be decided. No project `LICENSE` file is present. Bundled dependencies and assets may have their own terms.
+License: to be decided. No project `LICENSE` file is present. Bundled dependencies and assets may have their own terms
