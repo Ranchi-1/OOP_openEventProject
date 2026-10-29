@@ -107,6 +107,8 @@ OpenEvent/
 |   |-- schema.sql                     # Complete schema for a new database
 |   |-- migration-flexible-venue.sql   # Upgrade older venue storage
 |   `-- migration-section-color.sql    # Independent section colors
+|-- docs/                              # Setup guides
+|   `-- database.md                     # Database setup and troubleshooting
 |-- documentation/                     # Report, QA, and editable UML
 |   |-- Group6_OpenEvent_Submission.docx
 |   |-- FlexibleVenue_Guide.md
@@ -211,7 +213,7 @@ For an alternate file:
 java "-Dopenevent.config=config.test.properties" -jar target/OpenEvent-1.0-SNAPSHOT.jar
 ```
 
-`config.test.properties` is an example filename, not a supplied file or ignored pattern. Keep alternate files with credentials outside the repo or explicitly untracked. Never commit passwords, private database exports, or personal configuration. `.gitignore` excludes `config.properties`.
+`config.test.properties` is an example filename, not a supplied file. `.gitignore` excludes `config.properties` and `config.*.properties`, while retaining the safe `config.example.properties` template. Keep secrets out of all tracked files, including alternate files with other names.
 
 ## Usage
 
@@ -285,17 +287,29 @@ The current venue guide states that restored/shared standalone diagrams were lef
 
 ## Contributing
 
-No formal branch/commit convention is defined in the tracked project files. **Suggested convention:** `feature/<topic>`, `fix/<topic>`, or `docs/<topic>` branches with short imperative commit messages.
+Use `feature/<topic>`, `fix/<topic>`, or `docs/<topic>` branches. Make focused commits with descriptive messages that say what changed, for example `fix: prevent duplicate seat booking` or `docs: explain database setup`. Avoid vague messages such as `changes` or `update`.
 
-Keep changes focused, build, and run relevant explicit checks. Preserve paired `.java`/`.form` files when editing NetBeans screens. Document behavior/setup changes and keep credentials out of commits.
+Each member must commit their own actual contributions using their own Git name and email. Check your identity before committing; do not use a teammate’s identity or add credits for work someone did not do. Use a co-author credit only for genuinely shared work. Existing commits retain their original authors and messages so the contribution audit stays intact.
+
+```sh
+git config user.name
+git config user.email
+git diff --cached --stat
+git log --oneline -10
+```
+
+Build and run relevant explicit checks before committing. Preserve paired `.java`/`.form` files when editing NetBeans screens. Document behavior/setup changes. Never stage secrets, local configuration, database backups, or temporary files; `.gitignore` cannot remove secrets already tracked by Git.
 
 ## Team or authors
 
-TODO: Replace these placeholders with the team’s chosen attribution.
+Team members and roles confirmed by the group.
 
-| Name | Role |
+| Name | Role / main contribution |
 | --- | --- |
-| TODO: member name | TODO: role or contribution |
+| Pantonial, Francis Ellizar C. | Project Manager |
+| Lerasan, Reiyan B. | Programmer and QA Tester |
+| Abarquez, Real Ryan P. | Documentation |
+| Jardio, Elven John M. | Documentation |
 
 ## Credits and acknowledgments
 

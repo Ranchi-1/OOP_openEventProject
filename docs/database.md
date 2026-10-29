@@ -142,7 +142,7 @@ The import creates structure only. To add the optional demonstration records, fo
 | `db.password` / `OPENEVENT_DB_PASSWORD` | Example: `YOUR_LOCAL_DATABASE_PASSWORD`; fallback: empty | Replace the example placeholder with your local password. The empty root fallback is local-only. |
 | JVM property `openevent.config` | `config.properties`, relative to the working directory | Choose another properties file without changing code. |
 
-For example, `java "-Dopenevent.config=config.test.properties" -jar target/OpenEvent-1.0-SNAPSHOT.jar` reads a user-created alternate file. Only `config.properties` is explicitly ignored by [.gitignore](../.gitignore); do not commit alternate files containing credentials.
+For example, `java "-Dopenevent.config=config.test.properties" -jar target/OpenEvent-1.0-SNAPSHOT.jar` reads a user-created alternate file. [.gitignore](../.gitignore) excludes `config.properties` and `config.*.properties`, while keeping `config.example.properties` as the safe template. Do not commit credentials in files with other names.
 
 ### Timezone
 

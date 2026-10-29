@@ -1,10 +1,48 @@
 # Local configuration and secrets
 config.properties
+config.*.properties
+!config.example.properties
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+credentials.json
+secrets.properties
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
 
-# Maven build output
+# Build output and installed dependencies
 target/
+build/
+dist/
+node_modules/
+*.class
 
-# IDE files
+# Temporary files, editor backups, and logs
+~$*
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+*~
+
+# Local database backups; keep database/schema.sql and migrations tracked
+/backups/
+/dumps/
+*-backup.sql
+*_backup.sql
+*.sql.gz
+
+# IDE and operating-system files
 .idea/
 *.iml
 .nb-gradle/
+.DS_Store
+Thumbs.db
+desktop.ini
